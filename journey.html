@@ -4,8 +4,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Team SEA - Together we make a difference</title>
-    <meta name="description" content="Team SEA - Supporting clean water initiatives" />
+    <title>My Journey - Team SEA</title>
+    <meta name="description" content="The journey of Team SEA's founder" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -22,11 +22,11 @@
             
             <!-- Desktop Navigation -->
             <div class="hidden md:flex items-center space-x-1">
-              <a href="index.html" class="nav-link-active">Home</a>
+              <a href="index.html" class="nav-link">Home</a>
               <a href="impact.html" class="nav-link">Our Impact</a>
               <a href="donate.html" class="nav-link">Donate</a>
               <a href="about.html" class="nav-link">About us</a>
-              <a href="journey.html" class="nav-link">My Journey</a>
+              <a href="journey.html" class="nav-link-active">My Journey</a>
               <a href="contact.html" class="nav-link">Contact</a>
               <button 
                 id="language-toggle"
@@ -71,102 +71,158 @@
           <!-- Mobile Menu -->
           <div id="mobile-menu" class="md:hidden py-4 border-t animate-fade-in hidden">
             <div class="flex flex-col space-y-3">
-              <a href="index.html" class="nav-link-active">Home</a>
+              <a href="index.html" class="nav-link">Home</a>
               <a href="impact.html" class="nav-link">Our Impact</a>
               <a href="donate.html" class="nav-link">Donate</a>
               <a href="about.html" class="nav-link">About us</a>
-              <a href="journey.html" class="nav-link">My Journey</a>
+              <a href="journey.html" class="nav-link-active">My Journey</a>
               <a href="contact.html" class="nav-link">Contact</a>
             </div>
           </div>
         </div>
       </header>
 
-      <!-- Hero Section -->
-      <section class="relative bg-blue-900 text-white min-h-[70vh] flex items-center">
-        <div class="absolute inset-0 z-0 overflow-hidden">
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 opacity-90"></div>
-          <img 
-            src="https://images.unsplash.com/photo-1504893524553-b855bce32c67" 
-            alt="Water background" 
-            class="w-full h-full object-cover object-center"
-          >
+      <!-- Page Header -->
+      <section class="pt-16 pb-12 bg-blue-500 text-white">
+        <div class="container-custom">
+          <div class="max-w-3xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">My Journey</h1>
+            <p class="text-xl">From content creator to making a difference</p>
+          </div>
         </div>
-        <div class="container-custom relative z-10">
-          <div class="flex flex-col md:flex-row items-center md:justify-between">
-            <div class="md:w-1/2 mb-8 md:mb-0 text-center md:text-left">
-              <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Together we make a difference</h1>
-              <p class="text-lg md:text-xl mb-8">We're on a mission to provide clean water to communities in need around the world. Join us and be part of the change.</p>
-              <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                <a href="donate.html" class="btn-primary">Donate Now</a>
-                <a href="impact.html" class="btn-secondary">See Our Impact</a>
+      </section>
+
+      <!-- Introduction Section -->
+      <section class="py-16">
+        <div class="container-custom">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="animate-slide-up">
+              <h2 class="section-title">My story</h2>
+              <p class="text-lg mb-6">I started as a content creator on TikTok. But I wanted to do more. Team SEA is my way of making the world better – and we do it together.</p>
+              <p class="text-lg">What started as a simple TikTok account evolved into a platform with the potential to impact real change. I saw the opportunity to do more than just entertain – I saw a chance to make a difference.</p>
+            </div>
+            <div class="rounded-xl overflow-hidden shadow-lg animate-slide-up">
+              <img 
+                src="https://images.unsplash.com/photo-1611605698323-b1e99cfd37ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                alt="Content creator" 
+                class="w-full h-full object-cover"
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Journey Timeline Section -->
+      <section class="py-16 bg-gray-50">
+        <div class="container-custom">
+          <div class="max-w-3xl mx-auto text-center mb-12">
+            <h2 class="section-title">My Journey</h2>
+          </div>
+          
+          <div class="space-y-12">
+            <div class="flex flex-col md:flex-row gap-8 items-center animate-slide-up">
+              <div class="md:w-1/2">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md">
+                  <img 
+                    src="https://images.unsplash.com/photo-1611262588019-db6cc2032da3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    alt="The Beginning on TikTok" 
+                    class="w-full h-64 object-cover"
+                  >
+                </div>
+              </div>
+              <div class="md:w-1/2">
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                  <div class="text-primary font-bold text-xl mb-2">2020</div>
+                  <h3 class="text-xl font-semibold mb-3">The Beginning on TikTok</h3>
+                  <p class="text-gray-600">I started creating content on TikTok for fun, not knowing it would lead to something bigger.</p>
+                </div>
               </div>
             </div>
-            <div class="md:w-1/2">
-              <div class="flex justify-center">
+
+            <div class="flex flex-col md:flex-row-reverse gap-8 items-center animate-slide-up" style="animation-delay: 0.1s">
+              <div class="md:w-1/2">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md">
+                  <img 
+                    src="https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    alt="Growing Following" 
+                    class="w-full h-64 object-cover"
+                  >
+                </div>
+              </div>
+              <div class="md:w-1/2">
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                  <div class="text-primary font-bold text-xl mb-2">2021</div>
+                  <h3 class="text-xl font-semibold mb-3">Growing Following</h3>
+                  <p class="text-gray-600">With a growing platform, I began to realize I could use my voice for more than just entertainment.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 items-center animate-slide-up" style="animation-delay: 0.2s">
+              <div class="md:w-1/2">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md">
+                  <img 
+                    src="https://images.unsplash.com/photo-1541123437800-1bb1317badc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    alt="Inspiring Journey" 
+                    class="w-full h-64 object-cover"
+                  >
+                </div>
+              </div>
+              <div class="md:w-1/2">
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                  <div class="text-primary font-bold text-xl mb-2">2022</div>
+                  <h3 class="text-xl font-semibold mb-3">Inspiring Journey</h3>
+                  <p class="text-gray-600">A trip to Africa opened my eyes to the real challenges many people face with access to clean drinking water.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row-reverse gap-8 items-center animate-slide-up" style="animation-delay: 0.3s">
+              <div class="md:w-1/2">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md">
+                  <img 
+                    src="https://images.unsplash.com/photo-1576177129452-69ec381730f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    alt="Birth of Team SEA" 
+                    class="w-full h-64 object-cover"
+                  >
+                </div>
+              </div>
+              <div class="md:w-1/2">
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                  <div class="text-primary font-bold text-xl mb-2">2023</div>
+                  <h3 class="text-xl font-semibold mb-3">Birth of Team SEA</h3>
+                  <p class="text-gray-600">I decided to do something about it and started Team SEA with a mission to build wells and provide clean water to those who need it most.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-16 text-center">
+            <p class="text-lg mb-8">And this is just the beginning. With your support, we can continue to grow and reach even more people in need.</p>
+            <a href="donate.html" class="btn-primary">Be part of the journey</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Inspiration Section -->
+      <section class="py-16">
+        <div class="container-custom">
+          <div class="bg-white p-8 md:p-12 rounded-xl shadow-md">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 class="section-title">My Inspiration</h2>
+                <p class="text-lg mb-4">When I visited villages in Africa and saw children drinking muddy water, I knew I had to do something. Access to clean water isn't just a luxury – it's a matter of life or death.</p>
+                <p class="text-lg">My platform gave me not just an audience, but a community of people who want to make a difference. Together, we can create real change in the world.</p>
+              </div>
+              <div class="rounded-xl overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/682170c0-48b6-43fb-92dd-8a226b1a1a39.png" 
-                  alt="Team SEA Logo" 
-                  class="max-w-xs md:max-w-sm"
+                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  alt="Inspiration" 
+                  class="w-full h-full object-cover"
                 >
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- Impact Stats Section -->
-      <section class="py-16 bg-white">
-        <div class="container-custom">
-          <div class="text-center mb-12">
-            <h2 class="section-title">Our Impact So Far</h2>
-            <p class="text-lg">With your support, we're making real change happen.</p>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            <div class="bg-blue-50 p-8 rounded-xl shadow-sm text-center">
-              <div class="text-4xl font-bold text-primary mb-2">1</div>
-              <p class="text-xl">water-well built</p>
-            </div>
-            <div class="bg-blue-50 p-8 rounded-xl shadow-sm text-center">
-              <div class="text-4xl font-bold text-primary mb-2">50+</div>
-              <p class="text-xl">people helped</p>
-            </div>
-          </div>
-          
-          <div class="text-center mt-12">
-            <a href="impact.html" class="btn-primary">Learn More</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Mission Section -->
-      <section class="py-16 bg-gray-50">
-        <div class="container-custom">
-          <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="rounded-xl overflow-hidden shadow-lg animate-slide-up">
-              <img 
-                src="https://images.unsplash.com/photo-1472396961693-142e6e269027" 
-                alt="Team SEA Mission" 
-                class="w-full h-full object-cover"
-              >
-            </div>
-            <div class="animate-slide-up">
-              <h2 class="section-title">Our Mission</h2>
-              <p class="text-lg mb-4">We believe that access to clean water is a fundamental human right. Our mission is to build wells in communities where access to safe, clean water is limited.</p>
-              <p class="text-lg mb-6">Each well we build provides a sustainable source of water for drinking, cooking, and sanitation, improving health outcomes and quality of life.</p>
-              <a href="about.html" class="btn-primary">About Us</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Call to Action -->
-      <section class="py-16 bg-blue-500 text-white">
-        <div class="container-custom text-center">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">Join Our Mission</h2>
-          <p class="text-xl mb-8 max-w-2xl mx-auto">Your donation, no matter the size, can help us reach more communities in need of clean water.</p>
-          <a href="donate.html" class="bg-white text-blue-500 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">Donate Today</a>
         </div>
       </section>
 
