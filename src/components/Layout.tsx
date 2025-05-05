@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Globe, Facebook, Instagram } from "lucide-react";
-import Logo from "./Logo";
 
 // Define the content type for better TypeScript support
 export type ContentType = {
@@ -78,7 +77,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="container-custom">
           <nav className="flex justify-between items-center py-4">
             <Link to="/" className="flex items-center space-x-2">
-              <Logo size="medium" />
+              {/* Logo removed */}
             </Link>
             
             {/* Desktop Navigation */}
@@ -154,9 +153,6 @@ const Footer: React.FC<{ language: string, content: ContentType }> = ({ language
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div>
             <h3 className="text-xl font-semibold mb-4">Team SEA</h3>
-            <div className="mb-4">
-              <Logo variant="glow" size="large" />
-            </div>
             <p className="mb-4 text-blue-100">
               {language === 'da'
                 ? 'Sammen gør vi en forskel, én donation ad gangen.'

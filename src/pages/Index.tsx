@@ -1,9 +1,10 @@
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { getLanguage, generateContent } from "@/components/Layout";
-import Logo from "@/components/Logo";
+
 const Index = () => {
   const [language, setLanguage] = useState('en');
   useEffect(() => {
@@ -44,7 +45,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-blue-900/20"></div>
         <div className="container-custom relative z-10 flex flex-col justify-between h-full">
           <div className="mt-6">
-            <Logo variant="hero" size="large" className="h-20 w-auto" />
+            {/* Logo removed */}
           </div>
           
           <div className="max-w-2xl pb-10 mt-auto">
