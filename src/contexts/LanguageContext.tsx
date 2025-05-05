@@ -1,13 +1,10 @@
 
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
-// Completely revised language detection to ALWAYS default to English
+// Improved language detection logic that prioritizes Danish for Danish users
 export const getLanguage = () => {
   try {
-    // Hard-coded default to ensure English is always used first
-    const FORCED_DEFAULT = 'en';
-    
-    console.log('Language detection started - default is ALWAYS English');
+    console.log('Language detection started');
     
     // Get stored preference if available
     if (typeof window !== 'undefined') {
@@ -18,30 +15,40 @@ export const getLanguage = () => {
       }
     }
     
-    // Log detailed detection info but ALWAYS return English
+    // Detect based on browser and timezone
     if (typeof window !== 'undefined') {
       const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
       const browserLang = navigator.language.toLowerCase();
       
-      console.log('DEBUG - Detection data (for informational purposes only):', {
+      const isDenmark = timeZone.includes('Copenhagen');
+      const isDanishBrowser = browserLang.startsWith('da');
+      
+      // Log detailed detection info for debugging
+      console.log('Language Detection (Detailed):', {
         timeZone,
+        isDenmark,
         browserLang,
+        isDanishBrowser,
         navigatorLanguages: navigator.languages,
         userAgent: navigator.userAgent,
-        platform: navigator.platform,
-        defaultLanguage: FORCED_DEFAULT
+        platform: navigator.platform
       });
       
-      // IMPORTANT: We're completely bypassing automatic detection now
-      // and always defaulting to English on first run
-      console.log('IMPORTANT: Bypassing detection - using hard default:', FORCED_DEFAULT);
+      // Use Danish if any Danish criteria are met (browser, timezone)
+      if (isDenmark || isDanishBrowser) {
+        console.log('Danish criteria met - setting language to Danish');
+        return 'da';
+      }
+      
+      console.log('No Danish criteria met - using English default');
     }
     
-    // ALWAYS return English for new visitors until they manually change it
-    return FORCED_DEFAULT;
+    // Default to English for all other cases
+    console.log('Using detected language (final decision): en');
+    return 'en';
   } catch (error) {
     console.error("Error in language detection:", error);
-    return 'en'; // Failsafe fallback
+    return 'en'; // Failsafe fallback to English
   }
 };
 
@@ -54,17 +61,24 @@ type LanguageContextType = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // ALWAYS explicitly default to English initially
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState('en'); // Start with English until detection completes
   const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
     // Only run once on initial load
     if (initialized) return;
     
+    // Initial state logging for debugging
+    console.log('Initial language state (detailed):', {
+      storedLanguage: localStorage.getItem('preferredLanguage'),
+      currentLanguage: language,
+      initialized,
+      pathname: window.location.pathname
+    });
+    
     // Get the language on first load
     const initialLanguage = getLanguage();
-    console.log('Setting initial language (should be en for new visitors):', initialLanguage);
+    console.log('Using detected language (final decision):', initialLanguage);
     setLanguage(initialLanguage);
     setInitialized(true);
   }, [initialized]);
@@ -73,7 +87,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   useEffect(() => {
     if (!initialized) return;
     
-    console.log('Path changed - current language state:', {
+    console.log('Path changed language check:', {
       currentLanguage: language,
       pathname: window.location.pathname
     });
