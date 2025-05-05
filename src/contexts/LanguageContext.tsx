@@ -1,49 +1,47 @@
+
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
-// Enhanced language detection function with debugging and strict English default
+// Completely revised language detection to ALWAYS default to English
 export const getLanguage = () => {
   try {
-    // ALWAYS default to English in all cases
-    const forcedDefaultLanguage = 'en';
+    // Hard-coded default to ensure English is always used first
+    const FORCED_DEFAULT = 'en';
     
-    if (typeof window === 'undefined') return forcedDefaultLanguage;
+    console.log('Language detection started - default is ALWAYS English');
     
-    // Get the timezone 
-    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    
-    // Strict check for Denmark timezone only
-    const isDenmark = timeZone === 'Europe/Copenhagen';
-    
-    // Strict check for Danish browser language
-    const browserLang = navigator.language.toLowerCase();
-    const isDanishBrowser = browserLang === 'da' || browserLang === 'da-dk';
-    
-    // Log the detection values for extensive debugging
-    console.log('Language Detection (Detailed):', {
-      timeZone,
-      isDenmark,
-      browserLang,
-      isDanishBrowser,
-      navigatorLanguages: navigator.languages,
-      userAgent: navigator.userAgent,
-      platform: navigator.platform
-    });
-    
-    // This is VERY strict - ONLY use Danish if BOTH conditions are met:
-    // 1. Must be physically in Denmark (Copenhagen timezone)
-    // 2. Must have Danish browser language
-    // Otherwise ALWAYS default to English no matter what
-    if (isDenmark && isDanishBrowser) {
-      console.log('Danish criteria met - setting language to Danish');
-      return 'da';
+    // Get stored preference if available
+    if (typeof window !== 'undefined') {
+      const storedPreference = localStorage.getItem('preferredLanguage');
+      if (storedPreference) {
+        console.log('Found stored language preference:', storedPreference);
+        return storedPreference;
+      }
     }
     
-    // Log the default decision
-    console.log('Default to English - Danish criteria NOT met');
-    return forcedDefaultLanguage;
+    // Log detailed detection info but ALWAYS return English
+    if (typeof window !== 'undefined') {
+      const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const browserLang = navigator.language.toLowerCase();
+      
+      console.log('DEBUG - Detection data (for informational purposes only):', {
+        timeZone,
+        browserLang,
+        navigatorLanguages: navigator.languages,
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        defaultLanguage: FORCED_DEFAULT
+      });
+      
+      // IMPORTANT: We're completely bypassing automatic detection now
+      // and always defaulting to English on first run
+      console.log('IMPORTANT: Bypassing detection - using hard default:', FORCED_DEFAULT);
+    }
+    
+    // ALWAYS return English for new visitors until they manually change it
+    return FORCED_DEFAULT;
   } catch (error) {
     console.error("Error in language detection:", error);
-    return 'en'; // Always fallback to English on any error
+    return 'en'; // Failsafe fallback
   }
 };
 
@@ -58,43 +56,24 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // ALWAYS explicitly default to English initially
   const [language, setLanguage] = useState('en');
-  // Track if we've initialized from storage or detection
   const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    // Only run this once
+    // Only run once on initial load
     if (initialized) return;
     
-    // Get the stored language from localStorage if available
-    const storedLanguage = localStorage.getItem('preferredLanguage');
-    
-    console.log('Initial language state (detailed):', { 
-      storedLanguage,
-      currentLanguage: language,
-      initialized,
-      pathname: window.location.pathname
-    });
-    
-    if (storedLanguage) {
-      // Use the stored language preference if available
-      console.log('Using stored language preference:', storedLanguage);
-      setLanguage(storedLanguage);
-    } else {
-      // Otherwise detect based on browser/location with HARD default to English
-      const detectedLanguage = getLanguage();
-      console.log('Using detected language (final decision):', detectedLanguage);
-      setLanguage(detectedLanguage);
-    }
-    
+    // Get the language on first load
+    const initialLanguage = getLanguage();
+    console.log('Setting initial language (should be en for new visitors):', initialLanguage);
+    setLanguage(initialLanguage);
     setInitialized(true);
   }, [initialized]);
 
-  // Let's also handle path changes to ensure language is properly applied on navigation
+  // Log path changes for debugging
   useEffect(() => {
     if (!initialized) return;
     
-    // Just log the current state whenever path changes
-    console.log('Path changed language check:', {
+    console.log('Path changed - current language state:', {
       currentLanguage: language,
       pathname: window.location.pathname
     });
