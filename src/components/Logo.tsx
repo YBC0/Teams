@@ -2,17 +2,21 @@
 import React from 'react';
 
 interface LogoProps {
-  variant?: 'default' | 'glow';
+  variant?: 'default' | 'glow' | 'hero';
   size?: 'small' | 'medium' | 'large';
   className?: string;
 }
 
 const Logo: React.FC<LogoProps> = ({ variant = 'default', size = 'medium', className = '' }) => {
   const getLogoSrc = () => {
-    if (variant === 'glow') {
-      return "/lovable-uploads/3c492f95-63c3-4620-aca1-74abf11d315b.png";
+    switch (variant) {
+      case 'glow':
+        return "/lovable-uploads/77db161f-7cb0-4447-af59-6e19a378eaba.png";
+      case 'hero':
+        return "/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde.png";
+      default:
+        return "/lovable-uploads/a9b001ac-9825-4fd7-a089-4c1a0350b31c.png";
     }
-    return "/lovable-uploads/2d3efebc-e7af-49d3-bd40-507ea90a1926.png";
   };
   
   const getSizeClass = () => {

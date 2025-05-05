@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
@@ -49,11 +48,14 @@ const Index = () => {
       {/* Hero Section with Ocean Background */}
       <section 
         className="relative h-[70vh] min-h-[500px] flex items-center text-white overflow-hidden bg-cover bg-center"
-        style={{ backgroundImage: `url('/lovable-uploads/8d7ceef9-7f7a-4a55-90c8-755fe616dd7e.png')` }}
+        style={{ backgroundImage: `url('/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde.png')` }}
       >
-        <div className="absolute inset-0 bg-blue-900/30"></div>
+        <div className="absolute inset-0 bg-blue-900/20"></div>
         <div className="container-custom relative z-10">
           <div className="max-w-2xl animate-fade-in">
+            <div className="mb-6">
+              <Logo variant="hero" size="large" className="h-20 w-auto" />
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">{content.hero.slogan}</h1>
             <p className="text-xl mb-8">{content.hero.intro}</p>
             <div className="flex flex-col sm:flex-row gap-4">
