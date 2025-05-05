@@ -1,12 +1,9 @@
-
 import React from 'react';
-
 interface LogoProps {
   variant?: 'default' | 'glow' | 'hero';
   size?: 'small' | 'medium' | 'large';
   className?: string;
 }
-
 const Logo: React.FC<LogoProps> = ({
   variant = 'default',
   size = 'medium',
@@ -22,7 +19,6 @@ const Logo: React.FC<LogoProps> = ({
         return "/lovable-uploads/a9b001ac-9825-4fd7-a089-4c1a0350b31c.png";
     }
   };
-  
   const getSizeClass = () => {
     switch (size) {
       case 'small':
@@ -33,14 +29,6 @@ const Logo: React.FC<LogoProps> = ({
         return 'h-10';
     }
   };
-  
-  return (
-    <img 
-      src={getLogoSrc()} 
-      alt="Team SEA Logo" 
-      className={`${getSizeClass()} w-auto ${className}`} 
-    />
-  );
+  return;
 };
-
 export default Logo;
