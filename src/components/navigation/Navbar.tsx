@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Globe } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { generateContent } from "@/utils/contentUtils";
+import Logo from "@/components/Logo";
 
 /**
  * Main navigation component that handles both desktop and mobile navigation
@@ -27,7 +28,7 @@ export const Navbar = () => {
       <div className="container-custom">
         <nav className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center space-x-2">
-            {/* Logo placeholder */}
+            <Logo size="medium" variant="default" />
           </Link>
           
           {/* Desktop Navigation */}
