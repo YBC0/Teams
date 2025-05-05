@@ -10,7 +10,7 @@ const Journey = () => {
   // Text content based on language
   const content = {
     page: {
-      title: language === 'da' ? 'Min rejse' : 'My journey',
+      title: language === 'da' ? 'Vores rejse' : 'Our journey',
       subtitle: language === 'da' 
         ? 'Følg med på Team SEAs rejse fra idé til handling.'
         : "Follow Team SEA's journey from idea to action.",
@@ -32,6 +32,7 @@ const Journey = () => {
         firstProjectDesc: language === 'da'
           ? 'Vores første brøndprojekt i Bangladesh bliver til virkelighed, og bringer rent drikkevand til over 50 mennesker.'
           : 'Our first well project in Bangladesh becomes a reality, bringing clean drinking water to over 50 people.',
+        seeProjects: language === 'da' ? 'Se vores projekter her' : 'See our projects here',
         future: language === 'da' ? 'Fremtiden' : 'The future',
         futureDesc: language === 'da'
           ? 'Vi ser frem til at udvide vores indsats og hjælpe endnu flere mennesker med adgang til rent drikkevand.'
@@ -108,7 +109,12 @@ const Journey = () => {
               <div className="bg-white rounded-xl shadow-sm p-6 flex-1">
                 <h3 className="text-xl font-semibold mb-2">{content.page.timeline.firstProject}</h3>
                 <p className="text-gray-600 mb-4">{content.page.timeline.firstProjectDesc}</p>
-                <div className="text-sm text-gray-500">{new Date().getFullYear()}</div>
+                <div className="flex flex-wrap items-center justify-between">
+                  <div className="text-sm text-gray-500">May 2025</div>
+                  <Button asChild variant="outline" size="sm" className="mt-2">
+                    <a href="/projects">{content.page.timeline.seeProjects}</a>
+                  </Button>
+                </div>
               </div>
             </div>
             
