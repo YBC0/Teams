@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { Layout, getLanguage } from "@/components/Layout";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Donate = () => {
   const [language, setLanguage] = useState('en');
@@ -49,11 +51,11 @@ const Donate = () => {
   return (
     <Layout>
       {/* Page Header */}
-      <section className="pt-12 md:pt-16 pb-8 md:pb-12 bg-blue-500 text-white">
+      <section className="relative pt-12 md:pt-16 pb-8 md:pb-12 bg-gradient-to-r from-blue-600 to-blue-500 text-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4">{content.page.title}</h1>
-            <p className="text-lg md:text-xl">{content.page.subtitle}</p>
+            <h1 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 animate-fade-in">{content.page.title}</h1>
+            <p className="text-lg md:text-xl opacity-90">{content.page.subtitle}</p>
           </div>
         </div>
       </section>
@@ -62,7 +64,7 @@ const Donate = () => {
       <section className="py-8 md:py-16">
         <div className="container-custom">
           <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12">
-            <div className="order-2 md:order-1 animate-slide-up">
+            <div className="order-2 md:order-1 animate-slide-up bg-white p-6 md:p-8 rounded-xl shadow-sm">
               <h2 className="section-title">{content.page.steps.title}</h2>
               <p className="mb-6 md:mb-8">{content.page.instructions}</p>
               
@@ -89,7 +91,7 @@ const Donate = () => {
                 </div>
               </div>
               
-              <div className="mt-6 md:mt-8 p-3 md:p-4 bg-blue-50 rounded-lg border border-blue-100">
+              <div className="mt-6 md:mt-8 p-3 md:p-4 bg-blue-50 rounded-lg border border-blue-100 hover:shadow-md transition-shadow duration-300">
                 <p className="font-semibold">{content.page.mobilepay}: <span className="text-primary text-lg md:text-xl">12345678</span></p>
               </div>
             </div>
@@ -97,7 +99,7 @@ const Donate = () => {
             <div className="order-1 md:order-2 flex justify-center bg-white p-4 md:p-8 rounded-xl shadow-md animate-slide-up">
               <div className="text-center">
                 <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">{content.page.qrCode.title}</h3>
-                <div className={`${isMobile ? 'w-48 h-48' : 'w-64 h-64'} mx-auto border-4 border-blue-500 rounded-lg bg-white flex items-center justify-center`}>
+                <div className={`${isMobile ? 'w-48 h-48' : 'w-64 h-64'} mx-auto border-4 border-blue-500 rounded-lg bg-white flex items-center justify-center transition-all duration-300 hover:border-primary`}>
                   {/* Placeholder for MobilePay QR code - This would be replaced with actual QR code image */}
                   <div className="w-full h-full bg-gray-200 flex items-center justify-center">
                     <p className="text-gray-600 text-sm md:text-base">{content.page.qrCode.placeholder}</p>
@@ -109,12 +111,12 @@ const Donate = () => {
         </div>
       </section>
 
-      {/* Top Donors Section - Empty */}
+      {/* Top Donors Section */}
       <section className="py-8 md:py-16 bg-gray-50">
         <div className="container-custom">
           <h2 className="section-title text-center mb-6 md:mb-12">{content.page.topDonors}</h2>
           
-          <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+          <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-blue-500 text-white">
@@ -137,9 +139,12 @@ const Donate = () => {
           </div>
           
           <div className="mt-8 md:mt-12 text-center">
-            <p className="text-gray-600 italic text-sm md:text-base">
+            <p className="text-gray-600 italic text-sm md:text-base mb-6">
               {content.page.thanks}
             </p>
+            <Button asChild variant="outline" className="mt-4">
+              <Link to="/impact">{language === 'da' ? 'Se vores aftryk' : 'See our impact'}</Link>
+            </Button>
           </div>
         </div>
       </section>
