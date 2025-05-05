@@ -3,14 +3,20 @@ import React, { useEffect, useState } from "react";
 import { Layout, getLanguage } from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "lucide-react";
+import { Calendar, ChevronDown, ChevronUp } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 const Projects = () => {
   const [language, setLanguage] = useState('en');
+  const [openProject, setOpenProject] = useState<number | null>(null);
 
   useEffect(() => {
     setLanguage(getLanguage());
   }, []);
+
+  const toggleProject = (projectId: number) => {
+    setOpenProject(openProject === projectId ? null : projectId);
+  };
 
   // Text content based on language
   const content = {
@@ -19,8 +25,9 @@ const Projects = () => {
       subtitle: language === 'da' 
         ? 'Her kan du se alle vores projekter og følge fremskridt.' 
         : 'Here you can see all our projects and follow progress.',
-      comingSoon: language === 'da' ? 'Billeder af færdige projekter kommer snart!' : 'Pictures of completed projects coming soon!',
-      viewMore: language === 'da' ? 'Se flere detaljer' : 'View more details'
+      viewMore: language === 'da' ? 'Se flere detaljer' : 'View more details',
+      hideDetails: language === 'da' ? 'Skjul detaljer' : 'Hide details',
+      photos: language === 'da' ? 'Projektbilleder' : 'Project Photos'
     },
     projects: [
       {
@@ -32,7 +39,19 @@ const Projects = () => {
           ? 'Vores første brøndprojekt i Bangladesh giver rent drikkevand til en landsby med over 50 mennesker, der tidligere måtte gå flere kilometer hver dag for at hente vand.'
           : 'Our first well project in Bangladesh provides clean drinking water to a village of over 50 people who previously had to walk several kilometers each day to fetch water.',
         status: language === 'da' ? 'Igangværende' : 'In progress',
-        imageSrc: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb'
+        imageSrc: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
+        photos: [
+          {
+            id: 1,
+            src: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
+            alt: language === 'da' ? 'Projektområde' : 'Project area'
+          },
+          {
+            id: 2,
+            src: 'https://images.unsplash.com/photo-1501854140801-50d01698950b',
+            alt: language === 'da' ? 'Byggestart' : 'Construction start'
+          }
+        ]
       }
     ]
   };
@@ -83,10 +102,52 @@ const Projects = () => {
                     </CardHeader>
                     <CardContent>
                       <p className="text-gray-600">{project.description}</p>
-                      <p className="mt-4 text-gray-600 italic">{content.page.comingSoon}</p>
                     </CardContent>
                     <CardFooter>
-                      <Button variant="outline">{content.page.viewMore}</Button>
+                      <Collapsible 
+                        className="w-full" 
+                        open={openProject === project.id}
+                        onOpenChange={() => toggleProject(project.id)}
+                      >
+                        <CollapsibleTrigger asChild>
+                          <Button variant="outline" className="flex items-center gap-2">
+                            {openProject === project.id ? (
+                              <>
+                                {content.page.hideDetails} 
+                                <ChevronUp className="h-4 w-4" />
+                              </>
+                            ) : (
+                              <>
+                                {content.page.viewMore} 
+                                <ChevronDown className="h-4 w-4" />
+                              </>
+                            )}
+                          </Button>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent className="mt-6">
+                          <div className="space-y-4">
+                            <h4 className="font-medium text-lg">{content.page.photos}</h4>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                              {project.photos && project.photos.length > 0 ? (
+                                project.photos.map((photo) => (
+                                  <div key={photo.id} className="rounded-lg overflow-hidden shadow-md">
+                                    <img 
+                                      src={photo.src} 
+                                      alt={photo.alt} 
+                                      className="w-full h-64 object-cover"
+                                    />
+                                    <p className="p-2 text-sm text-gray-500">{photo.alt}</p>
+                                  </div>
+                                ))
+                              ) : (
+                                <p className="text-gray-600 italic">
+                                  {language === 'da' ? 'Billeder af projektet kommer snart!' : 'Pictures of the project coming soon!'}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        </CollapsibleContent>
+                      </Collapsible>
                     </CardFooter>
                   </div>
                 </div>
