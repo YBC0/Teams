@@ -90,7 +90,7 @@ const Index = () => {
               </Button>
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg animate-slide-up">
-              <img src="https://images.unsplash.com/photo-1592388748465-8c4dca8dd760?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt={language === 'da' ? 'Brøndprojekt i Bangladesh' : 'Well project in Bangladesh'} className="w-full h-full object-cover" />
+              <img alt={language === 'da' ? 'Brøndprojekt i Bangladesh' : 'Well project in Bangladesh'} className="w-full h-full object-cover" src="/lovable-uploads/35dac9b3-780a-4bc3-b3bf-a8546566d8a6.png" />
             </div>
           </div>
         </div>
