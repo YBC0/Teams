@@ -76,7 +76,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           <nav className="flex justify-between items-center py-4">
             <Link to="/" className="flex items-center space-x-2">
               <img 
-                src="/lovable-uploads/682170c0-48b6-43fb-92dd-8a226b1a1a39.png" 
+                src="/lovable-uploads/2d3efebc-e7af-49d3-bd40-507ea90a1926.png" 
                 alt="Team SEA Logo" 
                 className="h-10 w-auto"
                 onError={(e) => {
@@ -160,6 +160,13 @@ const Footer: React.FC<{ language: string, content: ContentType }> = ({ language
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div>
             <h3 className="text-xl font-semibold mb-4">Team SEA</h3>
+            <div className="mb-4">
+              <img 
+                src="/lovable-uploads/2d3efebc-e7af-49d3-bd40-507ea90a1926.png" 
+                alt="Team SEA Logo" 
+                className="h-12 w-auto"
+              />
+            </div>
             <p className="mb-4 text-blue-100">
               {language === 'da'
                 ? 'Sammen gør vi en forskel, én donation ad gangen.'
