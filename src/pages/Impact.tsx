@@ -41,7 +41,7 @@ const Impact = () => {
       title: language === 'da' ? 'Vores aftryk' : 'Our Impact',
       subtitle: language === 'da' 
         ? 'Se hvad vi allerede har opnået sammen med jeres støtte. Hver donation gør en forskel.'
-        : 'See what we've already accomplished with your support. Every donation makes a difference.',
+        : "See what we've already accomplished with your support. Every donation makes a difference.",
       stats: {
         wells: language === 'da' ? 'Brønde bygget' : 'Wells built',
         people: language === 'da' ? 'Mennesker hjulpet' : 'People helped',

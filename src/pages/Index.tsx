@@ -139,7 +139,7 @@ const Index = () => {
               <p className="mb-6">
                 {language === 'da'
                   ? 'Se hvad vi allerede har opnået sammen med jeres støtte. Hver donation gør en forskel.'
-                  : 'See what we've already accomplished with your support. Every donation makes a difference.'}
+                  : "See what we've already accomplished with your support. Every donation makes a difference."}
               </p>
               <div className="mb-8">
                 <div className="grid grid-cols-2 gap-4">
@@ -183,8 +183,8 @@ const Index = () => {
               <h2 className="section-title">{language === 'da' ? 'Doner' : 'Donate'}</h2>
               <p className="mb-6">
                 {language === 'da'
-                  ? 'Donér via MobilePay. Husk at skrive dit ønskede navn i beskedfeltet – eller skriv \'Anonym\'.'
-                  : 'Donate via MobilePay. Please write your preferred name in the message field – or write \'Anonymous\'.'}
+                  ? "Donér via MobilePay. Husk at skrive dit ønskede navn i beskedfeltet – eller skriv 'Anonym'."
+                  : "Donate via MobilePay. Please write your preferred name in the message field – or write 'Anonymous'."}
               </p>
               <Button asChild>
                 <Link to="/donate">{language === 'da' ? 'Gå til donation' : 'Go to donation'}</Link>

@@ -40,7 +40,7 @@ const About = () => {
       title: language === 'da' ? 'Om os' : 'About us',
       subtitle: language === 'da' 
         ? 'Vi er et hold af frivillige, der arbejder for at gøre en forskel. Team SEA blev stiftet ud fra en passion for at hjælpe og inspirere.'
-        : 'We're a team of volunteers working to make a difference. Team SEA was born from a passion to help and inspire.',
+        : "We're a team of volunteers working to make a difference. Team SEA was born from a passion to help and inspire.",
       mission: {
         title: language === 'da' ? 'Vores mission' : 'Our mission',
         description: language === 'da'
@@ -94,7 +94,7 @@ const About = () => {
       role: language === 'da' ? 'Marketing & SoMe' : 'Marketing & Social Media',
       bio: language === 'da'
         ? 'Ansvarlig for Team SEAs digitale tilstedeværelse og for at sprede budskabet om vores mission.'
-        : 'Responsible for Team SEA's digital presence and for spreading the word about our mission.',
+        : "Responsible for Team SEA's digital presence and for spreading the word about our mission.",
       image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
     },
     {
@@ -186,7 +186,7 @@ const About = () => {
             <div className="rounded-xl overflow-hidden shadow-lg animate-slide-up">
               <img 
                 src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                alt={language === 'da' ? 'Team SEAs mission' : 'Team SEA\'s mission'} 
+                alt={language === 'da' ? 'Team SEAs mission' : "Team SEA's mission"} 
                 className="w-full h-full object-cover"
               />
             </div>
