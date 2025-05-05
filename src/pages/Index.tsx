@@ -50,10 +50,13 @@ const Index = () => {
             <Logo variant="hero" size="large" className="h-20 w-auto" />
           </div>
           
-          <div className="max-w-2xl pb-10">
+          <div className="max-w-2xl pb-10 mt-auto">
             <h1 className="text-4xl font-bold mb-4">{content.hero.slogan}</h1>
             <p className="text-lg mb-8">{content.hero.intro}</p>
-            
+          </div>
+          
+          {/* Buttons positioned at the bottom middle */}
+          <div className="w-full flex justify-center mb-10">
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild>
                 <Link to="/impact" className="btn-primary">{content.cta.learnMore}</Link>
