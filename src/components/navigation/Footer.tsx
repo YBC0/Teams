@@ -1,44 +1,31 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Heart } from "lucide-react";
 import { ContentType } from "@/utils/contentUtils";
+import { cn } from "@/lib/utils";
 
 /**
  * Footer component with navigation links and social media
  */
 export const Footer: React.FC<{ language: string, content: ContentType }> = ({ language, content }) => {
+  const year = new Date().getFullYear();
+  
   return (
-    <footer className="bg-blue-900 text-white py-12 mt-auto">
+    <footer className="relative bg-gradient-to-b from-blue-900 to-blue-950 text-white py-12 mt-auto">
       <div className="container-custom">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Team SEA</h3>
-            <p className="mb-4 text-blue-100">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+          <div className="animate-fade-in">
+            <h3 className="text-xl font-semibold mb-4 flex items-center">
+              Team SEA
+              <Heart className="w-4 h-4 ml-2 text-red-400" />
+            </h3>
+            <p className="mb-6 text-blue-100 max-w-md">
               {language === 'da'
                 ? 'Sammen gør vi en forskel, én donation ad gangen.'
                 : 'Together we make a difference, one donation at a time.'}
             </p>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-4">
-              {language === 'da' ? 'Hurtige links' : 'Quick links'}
-            </h3>
-            <ul className="space-y-2">
-              <li><Link to="/" className="text-blue-100 hover:text-white transition-colors">{content.nav.home}</Link></li>
-              <li><Link to="/impact" className="text-blue-100 hover:text-white transition-colors">{content.nav.impact}</Link></li>
-              <li><Link to="/projects" className="text-blue-100 hover:text-white transition-colors">{content.nav.projects}</Link></li>
-              <li><Link to="/donate" className="text-blue-100 hover:text-white transition-colors">{content.nav.donate}</Link></li>
-              <li><Link to="/about" className="text-blue-100 hover:text-white transition-colors">{content.nav.about}</Link></li>
-              <li><Link to="/journey" className="text-blue-100 hover:text-white transition-colors">{content.nav.journey}</Link></li>
-              <li><Link to="/contact" className="text-blue-100 hover:text-white transition-colors">{content.nav.contact}</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-4">
-              {language === 'da' ? 'Følg os' : 'Follow us'}
-            </h3>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 mb-6">
               <SocialLink href="https://facebook.com/" aria-label="Facebook">
                 <Facebook className="w-6 h-6" />
               </SocialLink>
@@ -52,22 +39,69 @@ export const Footer: React.FC<{ language: string, content: ContentType }> = ({ l
               </SocialLink>
             </div>
           </div>
+          
+          <div className="animate-fade-in">
+            <h3 className="text-xl font-semibold mb-4">
+              {language === 'da' ? 'Hurtige links' : 'Quick links'}
+            </h3>
+            <ul className="grid grid-cols-2 gap-2">
+              <li><FooterLink to="/">{content.nav.home}</FooterLink></li>
+              <li><FooterLink to="/impact">{content.nav.impact}</FooterLink></li>
+              <li><FooterLink to="/projects">{content.nav.projects}</FooterLink></li>
+              <li><FooterLink to="/donate">{content.nav.donate}</FooterLink></li>
+              <li><FooterLink to="/about">{content.nav.about}</FooterLink></li>
+              <li><FooterLink to="/journey">{content.nav.journey}</FooterLink></li>
+              <li><FooterLink to="/contact">{content.nav.contact}</FooterLink></li>
+            </ul>
+          </div>
+          
+          <div className="animate-fade-in lg:col-span-1 md:col-span-2">
+            <h3 className="text-xl font-semibold mb-4">
+              {language === 'da' ? 'Kontakt os' : 'Contact us'}
+            </h3>
+            <p className="text-blue-100 mb-4">
+              {language === 'da'
+                ? 'Har du spørgsmål eller ønsker du at vide mere om vores arbejde? Kontakt os!'
+                : 'Do you have questions or want to know more about our work? Contact us!'}
+            </p>
+            <Link 
+              to="/contact" 
+              className="inline-block bg-white/10 hover:bg-white/20 text-white py-2 px-4 rounded-md transition-colors duration-300"
+            >
+              {language === 'da' ? 'Kontakt os' : 'Contact us'}
+            </Link>
+          </div>
         </div>
-        <div className="border-t border-blue-800 mt-8 pt-8 text-center text-blue-200">
-          <p>&copy; {new Date().getFullYear()} Team SEA. {language === 'da' ? 'Alle rettigheder forbeholdes.' : 'All rights reserved.'}</p>
+        
+        <div className="border-t border-blue-800/60 mt-10 pt-8 text-center text-blue-200">
+          <p className="text-sm">
+            &copy; {year} Team SEA. {language === 'da' ? 'Alle rettigheder forbeholdes.' : 'All rights reserved.'}
+          </p>
         </div>
       </div>
     </footer>
   );
 };
 
-const SocialLink: React.FC<React.AnchorHTMLAttributes<HTMLAnchorElement>> = ({ children, ...props }) => (
+const SocialLink: React.FC<React.AnchorHTMLAttributes<HTMLAnchorElement>> = ({ children, className, ...props }) => (
   <a
     {...props}
     target="_blank"
     rel="noopener noreferrer"
-    className="text-blue-100 hover:text-white transition-colors"
+    className={cn(
+      "text-blue-100 hover:text-white transition-colors p-2 bg-white/10 rounded-full hover:bg-white/20",
+      className
+    )}
   >
     {children}
   </a>
+);
+
+const FooterLink: React.FC<{to: string, children: React.ReactNode}> = ({to, children}) => (
+  <Link 
+    to={to} 
+    className="text-blue-100 hover:text-white transition-colors py-1 block hover:translate-x-1 duration-200"
+  >
+    {children}
+  </Link>
 );

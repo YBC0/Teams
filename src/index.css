@@ -74,8 +74,12 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground font-['Poppins',sans-serif] leading-relaxed;
+    @apply bg-background text-foreground font-['Poppins',sans-serif] leading-relaxed antialiased;
   }
 }
 
@@ -85,15 +89,19 @@
   }
   
   .btn-primary {
-    @apply bg-primary text-white py-3 px-6 rounded-lg font-medium hover:bg-accent transition-colors duration-300;
+    @apply bg-primary text-white py-3 px-6 rounded-lg font-medium hover:bg-accent transition-colors duration-300 hover:scale-105 transform;
   }
 
   .btn-secondary {
-    @apply bg-white text-primary py-3 px-6 rounded-lg font-medium hover:bg-secondary border border-primary transition-colors duration-300;
+    @apply bg-white text-primary py-3 px-6 rounded-lg font-medium hover:bg-secondary border border-primary transition-colors duration-300 hover:scale-105 transform;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-6 text-accent;
+    @apply text-3xl md:text-4xl font-bold mb-6 text-accent relative;
+  }
+  
+  .section-title::after {
+    @apply content-[''] absolute left-0 bottom-0 w-16 h-1 bg-primary rounded;
   }
   
   .subsection-title {
@@ -101,15 +109,15 @@
   }
 
   .card {
-    @apply bg-white rounded-xl shadow-md overflow-hidden;
+    @apply bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg;
   }
 
   .nav-link {
-    @apply px-4 py-2 text-gray-700 hover:text-accent transition-colors duration-200;
+    @apply px-4 py-2 text-gray-700 hover:text-accent transition-colors duration-200 relative;
   }
 
   .nav-link-active {
-    @apply px-4 py-2 text-accent font-medium;
+    @apply px-4 py-2 text-accent font-medium relative;
   }
 
   .animate-fade-in {
@@ -118,6 +126,14 @@
   
   .animate-slide-up {
     animation: slideUp 0.8s ease-out;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out;
+  }
+  
+  .animate-scale {
+    animation: scale 0.5s ease-out;
   }
 
   @keyframes fadeIn {
@@ -137,6 +153,28 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes scale {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 }
