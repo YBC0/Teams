@@ -5,6 +5,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+
+// Page imports
 import Index from "./pages/Index";
 import Impact from "./pages/Impact";
 import Projects from "./pages/Projects";
@@ -14,7 +16,9 @@ import Journey from "./pages/Journey";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
-// Create a client with security settings
+/**
+ * Configure Query Client with sensible defaults
+ */
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -25,6 +29,9 @@ const queryClient = new QueryClient({
   },
 });
 
+/**
+ * Main App component with router and providers
+ */
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
