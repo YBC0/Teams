@@ -1,14 +1,11 @@
 
-import React, { useEffect, useState } from "react";
-import { Layout, getLanguage } from "@/components/Layout";
+import React from "react";
+import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Journey = () => {
-  const [language, setLanguage] = useState('en');
-
-  useEffect(() => {
-    setLanguage(getLanguage());
-  }, []);
+  const { language } = useLanguage();
 
   // Text content based on language
   const content = {

@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Globe, Facebook, Instagram } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // Define the content type for better TypeScript support
 export type ContentType = {
@@ -15,27 +15,6 @@ export type ContentType = {
     contact: string;
   };
   [key: string]: any;
-};
-
-// Enhanced language detection function that considers both browser language and country
-export const getLanguage = () => {
-  try {
-    if (typeof window === 'undefined') return 'en';
-    
-    // First check if we can determine the country via timezone
-    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const isDenmark = timeZone.includes('Copenhagen');
-    
-    // Then check browser language
-    const browserLang = navigator.language.toLowerCase();
-    const isDanishBrowser = browserLang.includes('da');
-    
-    // If either condition is true, use Danish
-    return (isDenmark || isDanishBrowser) ? 'da' : 'en';
-  } catch (error) {
-    console.error("Error detecting language:", error);
-    return 'en'; // Fallback safely
-  }
 };
 
 // Generate content based on language for reuse
@@ -58,18 +37,10 @@ interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const [language, setLanguage] = useState('en');
+  const { language, toggleLanguage } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const content = generateContent(language);
-
-  useEffect(() => {
-    setLanguage(getLanguage());
-  }, []);
-
-  const toggleLanguage = () => {
-    setLanguage(prev => prev === 'da' ? 'en' : 'da');
-  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -134,7 +105,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <Link to="/impact" className={isActive('/impact') ? "nav-link-active" : "nav-link"}>{content.nav.impact}</Link>
                 <Link to="/projects" className={isActive('/projects') ? "nav-link-active" : "nav-link"}>{content.nav.projects}</Link>
                 <Link to="/donate" className={isActive('/donate') ? "nav-link-active" : "nav-link"}>{content.nav.donate}</Link>
-                <Link to="/about" className={isActive('/about') ? "nav-link-active" : "nav-link"}>{content.nav.about}</Link>
+                <Link to="/about" className={isActive('/impact') ? "nav-link-active" : "nav-link"}>{content.nav.about}</Link>
                 <Link to="/journey" className={isActive('/journey') ? "nav-link-active" : "nav-link"}>{content.nav.journey}</Link>
                 <Link to="/contact" className={isActive('/contact') ? "nav-link-active" : "nav-link"}>{content.nav.contact}</Link>
               </div>

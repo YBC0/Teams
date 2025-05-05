@@ -1,18 +1,15 @@
 
-import React, { useEffect, useState } from "react";
-import { Layout, getLanguage } from "@/components/Layout";
+import React, { useState } from "react";
+import { Layout } from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, ChevronDown, ChevronUp } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Projects = () => {
-  const [language, setLanguage] = useState('en');
+  const { language } = useLanguage();
   const [openProject, setOpenProject] = useState<number | null>(null);
-
-  useEffect(() => {
-    setLanguage(getLanguage());
-  }, []);
 
   const toggleProject = (projectId: number) => {
     setOpenProject(openProject === projectId ? null : projectId);

@@ -1,15 +1,12 @@
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import { getLanguage, generateContent } from "@/components/Layout";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
-  const [language, setLanguage] = useState('en');
-  useEffect(() => {
-    setLanguage(getLanguage());
-  }, []);
+  const { language } = useLanguage();
 
   // Text content based on language
   const content = {
@@ -37,6 +34,7 @@ const Index = () => {
       moreAboutWork: language === 'da' ? 'Se mere om vores arbejde' : 'See more about our work'
     }
   };
+  
   return <Layout>
       {/* Hero Section with Ocean Background */}
       <section className="relative h-[70vh] min-h-[500px] flex items-start text-white overflow-hidden bg-cover bg-center" style={{

@@ -1,20 +1,14 @@
 
-import React, { useEffect, useState } from "react";
-import { Layout, getLanguage } from "@/components/Layout";
+import React from "react";
+import { Layout } from "@/components/Layout";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Donate = () => {
-  const [language, setLanguage] = useState('en');
+  const { language } = useLanguage();
   const isMobile = useIsMobile();
-
-  useEffect(() => {
-    // Call the enhanced getLanguage function
-    const detectedLanguage = getLanguage();
-    console.log('Detected language:', detectedLanguage);
-    setLanguage(detectedLanguage);
-  }, []);
 
   // Text content based on language
   const content = {
