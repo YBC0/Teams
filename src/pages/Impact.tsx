@@ -24,7 +24,8 @@ const Impact = () => {
         wellsBuiltValue: '1',
         peopleHelpedValue: '50+'
       },
-      projectsLink: language === 'da' ? 'Se alle vores projekter' : 'View all our projects'
+      projectsLink: language === 'da' ? 'Se alle vores projekter' : 'View all our projects',
+      impactImageAlt: language === 'da' ? 'Billede af vores aftryk' : 'Image of our impact'
     }
   };
 

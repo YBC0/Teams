@@ -55,12 +55,12 @@ const Projects = () => {
           {
             id: 1,
             src: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
-            alt: language === 'da' ? 'Projektområde' : 'Project area'
+            alt: language === 'da' ? 'Projektområde i Bangladesh' : 'Project area in Bangladesh'
           },
           {
             id: 2,
             src: 'https://images.unsplash.com/photo-1501854140801-50d01698950b',
-            alt: language === 'da' ? 'Byggestart' : 'Construction start'
+            alt: language === 'da' ? 'Byggestart af brønd' : 'Construction start of well'
           }
         ]
       }
