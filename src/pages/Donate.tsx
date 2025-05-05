@@ -8,7 +8,10 @@ const Donate = () => {
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    setLanguage(getLanguage());
+    // Call the enhanced getLanguage function
+    const detectedLanguage = getLanguage();
+    console.log('Detected language:', detectedLanguage);
+    setLanguage(detectedLanguage);
   }, []);
 
   // Text content based on language

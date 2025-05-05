@@ -17,12 +17,21 @@ export type ContentType = {
   [key: string]: any;
 };
 
-// Extract language detection into a secure utility
+// Enhanced language detection function that considers both browser language and country
 export const getLanguage = () => {
   try {
     if (typeof window === 'undefined') return 'en';
+    
+    // First check if we can determine the country via timezone
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const isDenmark = timeZone.includes('Copenhagen');
+    
+    // Then check browser language
     const browserLang = navigator.language.toLowerCase();
-    return browserLang.includes('da') ? 'da' : 'en';
+    const isDanishBrowser = browserLang.includes('da');
+    
+    // If either condition is true, use Danish
+    return (isDenmark || isDanishBrowser) ? 'da' : 'en';
   } catch (error) {
     console.error("Error detecting language:", error);
     return 'en'; // Fallback safely
