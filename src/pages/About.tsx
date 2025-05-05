@@ -36,14 +36,6 @@ const About = () => {
         sustainabilityDesc: language === 'da'
           ? 'Vi fokuserer på langsigtede løsninger, der kan fortsætte med at gavne lokalsamfund i mange år.'
           : 'We focus on long-term solutions that can continue to benefit local communities for many years.'
-      },
-      team: {
-        title: language === 'da' ? 'Mød holdet' : 'Meet the team',
-        founderTitle: language === 'da' ? 'Stifter & Leder' : 'Founder & Leader',
-        founderName: 'Burak C.',
-        founderBio: language === 'da'
-          ? 'Team SEA blev grundlagt af content creator Burak C. — for at skabe en positiv indvirkning. Med en voksende platform og dedikerede medlemmer tager Team SEA nu handling for at støtte mennesker i nød, startende med rent vand-initiativer.'
-          : 'Team SEA was founded by content creator Burak C. — to make a positive impact. With a growing platform and dedicated members, Team SEA is now taking action to support people in need, starting with clean water initiatives.'
       }
     }
   };
@@ -115,36 +107,6 @@ const About = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">{content.page.values.sustainability}</h3>
               <p className="text-gray-600">{content.page.values.sustainabilityDesc}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section - Only Founder */}
-      <section className="py-16">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="section-title">{content.page.team.title}</h2>
-          </div>
-          
-          <div className="max-w-xl mx-auto">
-            <div className="bg-white rounded-xl shadow-sm overflow-hidden animate-slide-up">
-              <div className="md:flex">
-                <div className="md:w-1/3">
-                  <div className="h-64 md:h-full">
-                    <img 
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500&q=80" 
-                      alt={content.page.team.founderName} 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div className="p-8 md:w-2/3">
-                  <h3 className="text-2xl font-semibold mb-2">{content.page.team.founderName}</h3>
-                  <p className="text-primary font-medium mb-4">{content.page.team.founderTitle}</p>
-                  <p className="text-gray-600">{content.page.team.founderBio}</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
