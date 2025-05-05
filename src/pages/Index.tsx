@@ -1,9 +1,11 @@
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { getLanguage, generateContent } from "@/components/Layout";
 import Logo from "@/components/Logo";
+
 const Index = () => {
   const [language, setLanguage] = useState('en');
   useEffect(() => {
@@ -36,20 +38,23 @@ const Index = () => {
       moreAboutWork: language === 'da' ? 'Se mere om vores arbejde' : 'See more about our work'
     }
   };
+
   return <Layout>
       {/* Hero Section with Ocean Background */}
-      <section className="relative h-[70vh] min-h-[500px] flex items-center text-white overflow-hidden bg-cover bg-center" style={{
+      <section className="relative h-[70vh] min-h-[500px] flex items-start text-white overflow-hidden bg-cover bg-center" style={{
       backgroundImage: `url('/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde.png')`
     }}>
         <div className="absolute inset-0 bg-blue-900/20"></div>
-        <div className="container-custom relative z-10">
-          <div className="max-w-2xl animate-fade-in flex flex-col justify-end h-full pb-16">
-            <div className="mb-6">
-              <Logo variant="hero" size="large" className="h-20 w-auto" />
-            </div>
+        <div className="container-custom relative z-10 flex flex-col justify-between h-full">
+          <div className="mt-6">
+            <Logo variant="hero" size="large" className="h-20 w-auto" />
+          </div>
+          
+          <div className="max-w-2xl pb-10">
+            <h1 className="text-4xl font-bold mb-4">{content.hero.slogan}</h1>
+            <p className="text-lg mb-8">{content.hero.intro}</p>
             
-            
-            <div className="flex flex-col sm:flex-row gap-4 mx-[240px] px- py-">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild>
                 <Link to="/impact" className="btn-primary">{content.cta.learnMore}</Link>
               </Button>
@@ -112,4 +117,5 @@ const Index = () => {
       </section>
     </Layout>;
 };
+
 export default Index;
