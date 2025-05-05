@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
@@ -52,7 +53,7 @@ const Index = () => {
       >
         <div className="absolute inset-0 bg-blue-900/20"></div>
         <div className="container-custom relative z-10">
-          <div className="max-w-2xl animate-fade-in">
+          <div className="max-w-2xl animate-fade-in flex flex-col justify-end h-full pb-16">
             <div className="mb-6">
               <Logo variant="hero" size="large" className="h-20 w-auto" />
             </div>
