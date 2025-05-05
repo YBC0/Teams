@@ -86,9 +86,9 @@ const Projects = () => {
             {content.projects.map((project) => (
               <Card key={project.id} className="overflow-hidden">
                 <div className="md:flex">
-                  <div className="md:shrink-0">
+                  <div className="md:shrink-0 md:w-80 h-48 md:h-auto">
                     <img 
-                      className="h-48 w-full object-cover md:h-full md:w-80" 
+                      className="h-full w-full object-cover" 
                       src={project.imageSrc} 
                       alt={project.title} 
                     />
