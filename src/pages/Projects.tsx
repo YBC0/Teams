@@ -27,14 +27,24 @@ const Projects = () => {
         : 'Here you can see all our projects and follow progress.',
       viewMore: language === 'da' ? 'Se flere detaljer' : 'View more details',
       hideDetails: language === 'da' ? 'Skjul detaljer' : 'Hide details',
-      photos: language === 'da' ? 'Projektbilleder' : 'Project Photos'
+      photos: language === 'da' ? 'Projektbilleder' : 'Project Photos',
+      futureProjects: language === 'da' ? 'Kommende Projekter' : 'Future Projects',
+      futureProjectsDesc: language === 'da' 
+        ? 'Vi planlægger flere brøndprojekter i fremtiden.' 
+        : 'We are planning more well projects in the future.',
+      futureProjectsFollow: language === 'da'
+        ? 'Følg med her for at se vores kommende projekter og hvordan du kan hjælpe.'
+        : 'Check back here to see our upcoming projects and how you can help.',
+      noPictures: language === 'da' 
+        ? 'Billeder af projektet kommer snart!' 
+        : 'Pictures of the project coming soon!'
     },
     projects: [
       {
         id: 1,
         title: language === 'da' ? 'Brønd i Bangladesh' : 'Water Well in Bangladesh',
         location: 'Bangladesh',
-        date: 'May 2025',
+        date: language === 'da' ? 'Maj 2025' : 'May 2025',
         description: language === 'da'
           ? 'Vores første brøndprojekt i Bangladesh giver rent drikkevand til en landsby med over 50 mennesker, der tidligere måtte gå flere kilometer hver dag for at hente vand.'
           : 'Our first well project in Bangladesh provides clean drinking water to a village of over 50 people who previously had to walk several kilometers each day to fetch water.',
@@ -141,7 +151,7 @@ const Projects = () => {
                                 ))
                               ) : (
                                 <p className="text-gray-600 italic">
-                                  {language === 'da' ? 'Billeder af projektet kommer snart!' : 'Pictures of the project coming soon!'}
+                                  {content.page.noPictures}
                                 </p>
                               )}
                             </div>
@@ -161,17 +171,13 @@ const Projects = () => {
       <section className="py-16 bg-gray-50">
         <div className="container-custom text-center">
           <h2 className="section-title mb-6">
-            {language === 'da' ? 'Kommende Projekter' : 'Future Projects'}
+            {content.page.futureProjects}
           </h2>
           <p className="mb-4 max-w-2xl mx-auto">
-            {language === 'da' 
-              ? 'Vi planlægger flere brøndprojekter i fremtiden.' 
-              : 'We are planning more well projects in the future.'}
+            {content.page.futureProjectsDesc}
           </p>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            {language === 'da'
-              ? 'Følg med her for at se vores kommende projekter og hvordan du kan hjælpe.'
-              : 'Check back here to see our upcoming projects and how you can help.'}
+            {content.page.futureProjectsFollow}
           </p>
         </div>
       </section>
