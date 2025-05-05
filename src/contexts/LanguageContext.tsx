@@ -1,25 +1,27 @@
+
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
-// Enhanced language detection function that better considers timezone and browser language
+// Enhanced language detection function that is stricter about defaulting to English
 export const getLanguage = () => {
   try {
     if (typeof window === 'undefined') return 'en';
     
-    // Get the timezone
+    // Get the timezone 
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     
-    // More specific check for Denmark timezone
+    // Strict check for Denmark timezone only
     const isDenmark = timeZone === 'Europe/Copenhagen';
     
-    // Check browser language with better specificity
+    // Strict check for Danish browser language
     const browserLang = navigator.language.toLowerCase();
     const isDanishBrowser = browserLang === 'da' || browserLang === 'da-dk';
     
-    // Only use Danish if explicitly in Denmark or using Danish as primary language
-    return (isDenmark || isDanishBrowser) ? 'da' : 'en';
+    // Default to English for all non-Danish locations and languages
+    // Only use Danish if BOTH in Denmark AND using Danish browser language
+    return (isDenmark && isDanishBrowser) ? 'da' : 'en';
   } catch (error) {
     console.error("Error detecting language:", error);
-    return 'en'; // Fallback safely
+    return 'en'; // Always safe fallback to English
   }
 };
 
@@ -32,6 +34,7 @@ type LanguageContextType = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // Default to English initially
   const [language, setLanguage] = useState('en');
 
   useEffect(() => {
