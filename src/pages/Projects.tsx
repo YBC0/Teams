@@ -37,7 +37,8 @@ const Projects = () => {
         : 'Check back here to see our upcoming projects and how you can help.',
       noPictures: language === 'da' 
         ? 'Billeder af projektet kommer snart!' 
-        : 'Pictures of the project coming soon!'
+        : 'Pictures of the project coming soon!',
+      additionalPhotos: language === 'da' ? 'Flere billeder' : 'Additional Photos'
     },
     projects: [
       {
@@ -135,11 +136,11 @@ const Projects = () => {
                           </Button>
                         </CollapsibleTrigger>
                         <CollapsibleContent className="mt-6">
-                          <div className="space-y-4">
-                            <h4 className="font-medium text-lg">{content.page.photos}</h4>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                              {project.photos && project.photos.length > 0 ? (
-                                project.photos.map((photo) => (
+                          {project.photos && project.photos.length > 1 ? (
+                            <div className="space-y-4">
+                              <h4 className="font-medium text-lg">{content.page.additionalPhotos}</h4>
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                {project.photos.slice(1).map((photo) => (
                                   <div key={photo.id} className="rounded-lg overflow-hidden shadow-md">
                                     <img 
                                       src={photo.src} 
@@ -148,14 +149,14 @@ const Projects = () => {
                                     />
                                     <p className="p-2 text-sm text-gray-500">{photo.alt}</p>
                                   </div>
-                                ))
-                              ) : (
-                                <p className="text-gray-600 italic">
-                                  {content.page.noPictures}
-                                </p>
-                              )}
+                                ))}
+                              </div>
                             </div>
-                          </div>
+                          ) : (
+                            <p className="text-gray-600 italic">
+                              {content.page.noPictures}
+                            </p>
+                          )}
                         </CollapsibleContent>
                       </Collapsible>
                     </CardFooter>
