@@ -3,6 +3,7 @@ import React from "react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "react-router-dom";
 
 const Journey = () => {
   const { language } = useLanguage();
@@ -62,10 +63,10 @@ const Journey = () => {
               <p className="mb-6 text-lg">{content.page.story.description}</p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild variant="default">
-                  <a href="/about">{content.page.story.readMore}</a>
+                  <Link to="/about">{content.page.story.readMore}</Link>
                 </Button>
                 <Button asChild variant="outline">
-                  <a href="/impact">{content.page.story.impact}</a>
+                  <Link to="/impact">{content.page.story.impact}</Link>
                 </Button>
               </div>
             </div>
@@ -112,7 +113,7 @@ const Journey = () => {
                 <div className="flex flex-wrap items-center justify-between">
                   <div className="text-sm text-gray-500">May 2025</div>
                   <Button asChild variant="outline" size="sm" className="mt-2">
-                    <a href="/projects">{content.page.timeline.seeProjects}</a>
+                    <Link to="/projects">{content.page.timeline.seeProjects}</Link>
                   </Button>
                 </div>
               </div>
