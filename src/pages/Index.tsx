@@ -1,11 +1,9 @@
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { getLanguage, generateContent } from "@/components/Layout";
 import Logo from "@/components/Logo";
-
 const Index = () => {
   const [language, setLanguage] = useState('en');
   useEffect(() => {
@@ -38,7 +36,6 @@ const Index = () => {
       moreAboutWork: language === 'da' ? 'Se mere om vores arbejde' : 'See more about our work'
     }
   };
-
   return <Layout>
       {/* Hero Section with Ocean Background */}
       <section className="relative h-[70vh] min-h-[500px] flex items-start text-white overflow-hidden bg-cover bg-center" style={{
@@ -51,8 +48,8 @@ const Index = () => {
           </div>
           
           <div className="max-w-2xl pb-10 mt-auto">
-            <h1 className="text-4xl font-bold mb-4">{content.hero.slogan}</h1>
-            <p className="text-lg mb-8">{content.hero.intro}</p>
+            
+            
           </div>
           
           {/* Buttons positioned at the bottom middle */}
@@ -120,5 +117,4 @@ const Index = () => {
       </section>
     </Layout>;
 };
-
 export default Index;
