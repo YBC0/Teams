@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Globe, Facebook, Instagram } from "lucide-react";
+import Logo from "./Logo";
 
 // Define the content type for better TypeScript support
 export type ContentType = {
@@ -75,18 +75,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="container-custom">
           <nav className="flex justify-between items-center py-4">
             <Link to="/" className="flex items-center space-x-2">
-              <img 
-                src="/lovable-uploads/2d3efebc-e7af-49d3-bd40-507ea90a1926.png" 
-                alt="Team SEA Logo" 
-                className="h-10 w-auto"
-                onError={(e) => {
-                  // Fallback in case image fails to load
-                  const target = e.target as HTMLImageElement;
-                  target.onerror = null;
-                  target.src = "/placeholder.svg";
-                  console.error("Failed to load Team SEA logo");
-                }}
-              />
+              <Logo size="medium" />
             </Link>
             
             {/* Desktop Navigation */}
@@ -161,11 +150,7 @@ const Footer: React.FC<{ language: string, content: ContentType }> = ({ language
           <div>
             <h3 className="text-xl font-semibold mb-4">Team SEA</h3>
             <div className="mb-4">
-              <img 
-                src="/lovable-uploads/2d3efebc-e7af-49d3-bd40-507ea90a1926.png" 
-                alt="Team SEA Logo" 
-                className="h-12 w-auto"
-              />
+              <Logo variant="glow" size="large" />
             </div>
             <p className="mb-4 text-blue-100">
               {language === 'da'
