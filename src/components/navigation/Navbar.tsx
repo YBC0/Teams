@@ -28,7 +28,7 @@ export const Navbar = () => {
       <div className="container-custom">
         <nav className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center space-x-2">
-            <Logo size="medium" variant="default" />
+            <Logo size="medium" variant="default" linkWrapper={false} />
           </Link>
           
           {/* Desktop Navigation */}

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
@@ -15,7 +14,7 @@ const Index = () => {
       impact: language === 'da' ? 'Vores aftryk' : 'Our Impact',
       donate: language === 'da' ? 'Doner' : 'Donate',
       about: language === 'da' ? 'Om os' : 'About us',
-      journey: language === 'da' ? 'Min rejse' : 'My Journey',
+      journey: language === 'da' ? 'Vores rejse' : 'Our Journey',
       contact: language === 'da' ? 'Kontakt' : 'Contact'
     },
     hero: {
@@ -35,20 +34,21 @@ const Index = () => {
     }
   };
   
-  return <Layout>
+  return (
+    <Layout>
       {/* Hero Section with Ocean Background */}
       <section className="relative h-[70vh] min-h-[500px] flex items-start text-white overflow-hidden bg-cover bg-center" style={{
-      backgroundImage: `url('/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde.png')`
-    }}>
+        backgroundImage: `url('/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde.png')`
+      }}>
         <div className="absolute inset-0 bg-blue-900/20"></div>
         <div className="container-custom relative z-10 flex flex-col justify-between h-full">
           <div className="mt-6">
-            {/* Logo removed */}
+            {/* Logo position if needed */}
           </div>
           
           <div className="max-w-2xl pb-10 mt-auto">
-            
-            
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">{content.hero.slogan}</h1>
+            <p className="text-xl">{content.hero.intro}</p>
           </div>
           
           {/* Buttons positioned at the bottom middle */}
@@ -114,6 +114,8 @@ const Index = () => {
           </div>
         </div>
       </section>
-    </Layout>;
+    </Layout>
+  );
 };
+
 export default Index;
