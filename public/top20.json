@@ -1,0 +1,23 @@
+
+[
+  { "name": "Martin J.", "amount": 5000 },
+  { "name": "Lisa T.", "amount": 3500 },
+  { "name": "Anonymous", "amount": 2800 },
+  { "name": "Christian K.", "amount": 2500 },
+  { "name": "Emma S.", "amount": 2000 },
+  { "name": "Mads R.", "amount": 1800 },
+  { "name": "Sophie L.", "amount": 1500 },
+  { "name": "Thomas H.", "amount": 1200 },
+  { "name": "Anonymous", "amount": 1000 },
+  { "name": "Frederik P.", "amount": 950 },
+  { "name": "Marie B.", "amount": 900 },
+  { "name": "Anders N.", "amount": 850 },
+  { "name": "Camilla A.", "amount": 800 },
+  { "name": "Daniel W.", "amount": 750 },
+  { "name": "Isabella J.", "amount": 700 },
+  { "name": "Oliver M.", "amount": 650 },
+  { "name": "Victoria F.", "amount": 600 },
+  { "name": "William D.", "amount": 550 },
+  { "name": "Anna S.", "amount": 500 },
+  { "name": "Noah L.", "amount": 500 }
+]
