@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Globe, Facebook, Instagram } from "lucide-react";
@@ -8,6 +9,7 @@ export type ContentType = {
   nav: {
     home: string;
     impact: string;
+    projects: string;
     donate: string;
     about: string;
     journey: string;
@@ -34,6 +36,7 @@ export const generateContent = (language: string): ContentType => {
     nav: {
       home: language === 'da' ? 'Hjem' : 'Home',
       impact: language === 'da' ? 'Vores aftryk' : 'Our Impact',
+      projects: language === 'da' ? 'Projekter' : 'Projects',
       donate: language === 'da' ? 'Doner' : 'Donate',
       about: language === 'da' ? 'Om os' : 'About us',
       journey: language === 'da' ? 'Min rejse' : 'My Journey',
@@ -82,6 +85,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <div className="hidden md:flex items-center space-x-1">
               <Link to="/" className={isActive('/') ? "nav-link-active" : "nav-link"}>{content.nav.home}</Link>
               <Link to="/impact" className={isActive('/impact') ? "nav-link-active" : "nav-link"}>{content.nav.impact}</Link>
+              <Link to="/projects" className={isActive('/projects') ? "nav-link-active" : "nav-link"}>{content.nav.projects}</Link>
               <Link to="/donate" className={isActive('/donate') ? "nav-link-active" : "nav-link"}>{content.nav.donate}</Link>
               <Link to="/about" className={isActive('/about') ? "nav-link-active" : "nav-link"}>{content.nav.about}</Link>
               <Link to="/journey" className={isActive('/journey') ? "nav-link-active" : "nav-link"}>{content.nav.journey}</Link>
@@ -120,6 +124,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               <div className="flex flex-col space-y-3">
                 <Link to="/" className={isActive('/') ? "nav-link-active" : "nav-link"}>{content.nav.home}</Link>
                 <Link to="/impact" className={isActive('/impact') ? "nav-link-active" : "nav-link"}>{content.nav.impact}</Link>
+                <Link to="/projects" className={isActive('/projects') ? "nav-link-active" : "nav-link"}>{content.nav.projects}</Link>
                 <Link to="/donate" className={isActive('/donate') ? "nav-link-active" : "nav-link"}>{content.nav.donate}</Link>
                 <Link to="/about" className={isActive('/about') ? "nav-link-active" : "nav-link"}>{content.nav.about}</Link>
                 <Link to="/journey" className={isActive('/journey') ? "nav-link-active" : "nav-link"}>{content.nav.journey}</Link>
@@ -165,6 +170,7 @@ const Footer: React.FC<{ language: string, content: ContentType }> = ({ language
             <ul className="space-y-2">
               <li><Link to="/" className="text-blue-100 hover:text-white transition-colors">{content.nav.home}</Link></li>
               <li><Link to="/impact" className="text-blue-100 hover:text-white transition-colors">{content.nav.impact}</Link></li>
+              <li><Link to="/projects" className="text-blue-100 hover:text-white transition-colors">{content.nav.projects}</Link></li>
               <li><Link to="/donate" className="text-blue-100 hover:text-white transition-colors">{content.nav.donate}</Link></li>
               <li><Link to="/about" className="text-blue-100 hover:text-white transition-colors">{content.nav.about}</Link></li>
               <li><Link to="/journey" className="text-blue-100 hover:text-white transition-colors">{content.nav.journey}</Link></li>
