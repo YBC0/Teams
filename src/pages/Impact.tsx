@@ -44,9 +44,7 @@ const Impact = () => {
         : "See what we've already accomplished with your support. Every donation makes a difference.",
       stats: {
         wells: language === 'da' ? 'Brønde bygget' : 'Wells built',
-        people: language === 'da' ? 'Mennesker hjulpet' : 'People helped',
-        villages: language === 'da' ? 'Landsbyer nået' : 'Villages reached',
-        donors: language === 'da' ? 'Donorer' : 'Donors'
+        people: language === 'da' ? 'Mennesker hjulpet' : 'People helped'
       },
       projects: {
         title: language === 'da' ? 'Vores projekter' : 'Our projects',
@@ -64,8 +62,8 @@ const Impact = () => {
       id: 1,
       title: language === 'da' ? 'Brønd i Moyo landsby' : 'Well in Moyo Village',
       description: language === 'da' 
-        ? 'Denne brønd giver rent drikkevand til over 500 mennesker i landsbyen.'
-        : 'This well provides clean drinking water to over 500 people in the village.',
+        ? 'Denne brønd giver rent drikkevand til over 50 mennesker i landsbyen.'
+        : 'This well provides clean drinking water to over 50 people in the village.',
       imageSrc: 'https://images.unsplash.com/photo-1595415340084-04928abec6c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     },
     {
@@ -161,22 +159,14 @@ const Impact = () => {
       {/* Statistics Section */}
       <section className="py-16">
         <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 gap-6 max-w-xl mx-auto">
             <div className="bg-white p-6 rounded-xl shadow-sm text-center animate-slide-up">
-              <p className="text-4xl md:text-5xl font-bold text-primary mb-2">12</p>
+              <p className="text-4xl md:text-5xl font-bold text-primary mb-2">1</p>
               <p className="text-gray-600">{content.page.stats.wells}</p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm text-center animate-slide-up" style={{ animationDelay: '0.1s' }}>
-              <p className="text-4xl md:text-5xl font-bold text-primary mb-2">5,000+</p>
+              <p className="text-4xl md:text-5xl font-bold text-primary mb-2">50+</p>
               <p className="text-gray-600">{content.page.stats.people}</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm text-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              <p className="text-4xl md:text-5xl font-bold text-primary mb-2">8</p>
-              <p className="text-gray-600">{content.page.stats.villages}</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm text-center animate-slide-up" style={{ animationDelay: '0.3s' }}>
-              <p className="text-4xl md:text-5xl font-bold text-primary mb-2">250+</p>
-              <p className="text-gray-600">{content.page.stats.donors}</p>
             </div>
           </div>
         </div>
