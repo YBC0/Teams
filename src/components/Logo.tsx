@@ -5,12 +5,14 @@ interface LogoProps {
   variant?: 'default' | 'glow' | 'hero';
   size?: 'small' | 'medium' | 'large';
   className?: string;
+  hidden?: boolean; // Add a hidden prop to control visibility
 }
 
 const Logo: React.FC<LogoProps> = ({
   variant = 'default',
   size = 'medium',
-  className = ''
+  className = '',
+  hidden = false
 }) => {
   const getLogoSrc = () => {
     switch (variant) {
@@ -33,6 +35,11 @@ const Logo: React.FC<LogoProps> = ({
         return 'h-10';
     }
   };
+
+  // If hidden is true, don't render anything
+  if (hidden) {
+    return null;
+  }
 
   return (
     <img 
