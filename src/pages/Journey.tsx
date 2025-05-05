@@ -233,7 +233,7 @@ const Journey = () => {
                 <p className="text-lg mb-4">
                   {language === 'da'
                     ? 'Da jeg besøgte landsbyer i Afrika og så børn drikke muddervand, vidste jeg, at jeg måtte gøre noget. Adgang til rent vand er ikke bare en luksus – det er et spørgsmål om liv eller død.'
-                    : 'When I visited villages in Africa and saw children drinking muddy water, I knew I had to do something. Access to clean water isn't just a luxury – it's a matter of life or death.'}
+                    : "When I visited villages in Africa and saw children drinking muddy water, I knew I had to do something. Access to clean water isn't just a luxury – it's a matter of life or death."}
                 </p>
                 <p className="text-lg">
                   {language === 'da'
