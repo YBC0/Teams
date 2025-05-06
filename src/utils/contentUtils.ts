@@ -27,7 +27,7 @@ export const generateContent = (language: string): ContentType => {
       projects: language === 'da' ? 'Projekter' : 'Projects',
       donate: language === 'da' ? 'Doner' : 'Donate',
       about: language === 'da' ? 'Om os' : 'About us',
-      journey: language === 'da' ? 'Min rejse' : 'My Journey',
+      journey: language === 'da' ? 'Vores rejse' : 'My Journey',
       contact: language === 'da' ? 'Kontakt' : 'Contact'
     }
   };
