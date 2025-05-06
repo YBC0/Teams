@@ -1,8 +1,6 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-
 interface LogoProps {
   variant?: 'default' | 'glow' | 'hero';
   size?: 'small' | 'medium' | 'large';
@@ -10,7 +8,6 @@ interface LogoProps {
   hidden?: boolean;
   linkWrapper?: boolean;
 }
-
 const Logo: React.FC<LogoProps> = ({
   variant = 'default',
   size = 'medium',
@@ -35,31 +32,12 @@ const Logo: React.FC<LogoProps> = ({
     glow: 'transition-all duration-300 drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]',
     hero: 'transition-all duration-300 drop-shadow-[0_0_15px_rgba(59,130,246,0.7)]'
   };
-
-  const logoImage = (
-    <img 
-      src="/lovable-uploads/682170c0-48b6-43fb-92dd-8a226b1a1a39.png"
-      alt="Team SEA Logo" 
-      className={cn(
-        sizeClasses[size], 
-        variantClasses[variant], 
-        "hover:scale-105 transition-transform duration-300",
-        className
-      )}
-    />
-  );
-
+  const logoImage;
   const wrapperClass = "flex items-center space-x-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md";
-
-  return linkWrapper ? (
-    <Link to="/" className={wrapperClass}>
+  return linkWrapper ? <Link to="/" className={wrapperClass}>
       {logoImage}
-    </Link>
-  ) : (
-    <div className={wrapperClass}>
+    </Link> : <div className={wrapperClass}>
       {logoImage}
-    </div>
-  );
+    </div>;
 };
-
 export default Logo;
