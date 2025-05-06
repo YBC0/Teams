@@ -81,13 +81,6 @@
   body {
     @apply bg-background text-foreground font-['Poppins',sans-serif] leading-relaxed antialiased;
   }
-  
-  /* Fix background image on mobile */
-  @media (max-width: 768px) {
-    .bg-fixed {
-      background-attachment: scroll;
-    }
-  }
 }
 
 @layer components {

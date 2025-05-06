@@ -126,7 +126,7 @@ const Index = () => {
             <div className="rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition-transform duration-300 animate-slide-up">
               <img 
                 alt={language === 'da' ? 'Brøndprojekt i Bangladesh' : 'Well project in Bangladesh'} 
-                className="w-full h-full object-cover aspect-[4/3]"
+                className="w-full h-full object-cover"
                 loading="lazy"
                 src="/lovable-uploads/35dac9b3-780a-4bc3-b3bf-a8546566d8a6.png" 
               />
@@ -143,7 +143,7 @@ const Index = () => {
               <img 
                 src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                 alt={language === 'da' ? 'Donér til Team SEA' : 'Donate to Team SEA'} 
-                className="w-full h-full object-cover aspect-[4/3]"
+                className="w-full h-full object-cover"
                 loading="lazy"
               />
             </div>
