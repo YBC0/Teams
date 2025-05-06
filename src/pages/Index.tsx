@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
@@ -18,7 +17,7 @@ const Index = () => {
   // Preload images to ensure they're available
   useEffect(() => {
     const mobileImg = new Image();
-    mobileImg.src = '/lovable-uploads/48588222-8859-40f4-bc67-cfc3a165d9ca.png';
+    mobileImg.src = '/lovable-uploads/d6ec1dda-8bb4-4cf6-a6b3-228bb2fed1b2.png';
     mobileImg.onload = () => setMobileImageLoaded(true);
     
     const desktopImg = new Image();
@@ -67,7 +66,7 @@ const Index = () => {
     }
   };
   
-  const mobileImageUrl = '/lovable-uploads/48588222-8859-40f4-bc67-cfc3a165d9ca.png';
+  const mobileImageUrl = '/lovable-uploads/d6ec1dda-8bb4-4cf6-a6b3-228bb2fed1b2.png';
   const desktopImageUrl = '/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde.png';
   
   return (
