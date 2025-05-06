@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
@@ -5,13 +6,25 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
+import Logo from "@/components/Logo";
 
 const Index = () => {
   const { language } = useLanguage();
   const [isLoaded, setIsLoaded] = useState(false);
   const isMobile = useIsMobile();
+  const [mobileImageLoaded, setMobileImageLoaded] = useState(false);
+  const [desktopImageLoaded, setDesktopImageLoaded] = useState(false);
 
+  // Preload images to ensure they're available
   useEffect(() => {
+    const mobileImg = new Image();
+    mobileImg.src = '/lovable-uploads/48588222-8859-40f4-bc67-cfc3a165d9ca.png';
+    mobileImg.onload = () => setMobileImageLoaded(true);
+    
+    const desktopImg = new Image();
+    desktopImg.src = '/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde.png';
+    desktopImg.onload = () => setDesktopImageLoaded(true);
+
     // Add animation delay for elements
     setIsLoaded(true);
   }, []);
@@ -54,6 +67,9 @@ const Index = () => {
     }
   };
   
+  const mobileImageUrl = '/lovable-uploads/48588222-8859-40f4-bc67-cfc3a165d9ca.png';
+  const desktopImageUrl = '/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde.png';
+  
   return (
     <Layout>
       {/* Hero Section with Ocean Background */}
@@ -61,10 +77,18 @@ const Index = () => {
         className="relative h-[85vh] md:h-[80vh] min-h-[550px] flex items-start text-white overflow-hidden bg-cover bg-center bg-fixed"
         style={{
           backgroundImage: isMobile 
-            ? `url('/lovable-uploads/48588222-8859-40f4-bc67-cfc3a165d9ca.png')` 
-            : `url('/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde.png')`
+            ? `url('${mobileImageUrl}')` 
+            : `url('${desktopImageUrl}')`,
+          backgroundSize: 'cover'
         }}
       >
+        {/* Show logo when images are loading */}
+        {(!mobileImageLoaded && isMobile) || (!desktopImageLoaded && !isMobile) ? (
+          <div className="absolute inset-0 flex items-center justify-center bg-blue-900/80">
+            <Logo variant="hero" size="large" />
+          </div>
+        ) : null}
+        
         <div className="absolute inset-0 bg-gradient-to-b from-blue-900/40 to-blue-900/20"></div>
         <div className="container-custom relative z-10 flex flex-col justify-between h-full">
           <div className="mt-6">
