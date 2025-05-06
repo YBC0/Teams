@@ -5,10 +5,12 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { cn } from "@/lib/utils";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
   const { language } = useLanguage();
   const [isLoaded, setIsLoaded] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     // Add animation delay for elements
@@ -59,7 +61,9 @@ const Index = () => {
       <section 
         className="relative h-[85vh] md:h-[80vh] min-h-[550px] flex items-start text-white overflow-hidden bg-cover bg-center bg-fixed"
         style={{
-          backgroundImage: `url('/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde.png')`
+          backgroundImage: isMobile 
+            ? `url('/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde-mobile.png')` 
+            : `url('/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde.png')`
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-blue-900/40 to-blue-900/20"></div>
