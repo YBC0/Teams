@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,17 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
 import Logo from "@/components/Logo";
+import { FAQSection } from "@/components/sections/faq-section";
+import { ProgressSection } from "@/components/sections/progress-section";
+import { MissionSection } from "@/components/sections/mission-section";
+import { PartnersSection } from "@/components/sections/partners-section";
+import { ContactSection } from "@/components/sections/contact-section";
+import { DonationImpactSection } from "@/components/sections/donation-impact-section";
+
+// Lazy load heavy/below-the-fold sections
+const FAQSectionLazy = React.lazy(() => import("@/components/sections/faq-section").then(m => ({ default: m.FAQSection })));
+const PartnersSectionLazy = React.lazy(() => import("@/components/sections/partners-section").then(m => ({ default: m.PartnersSection })));
+const ContactSectionLazy = React.lazy(() => import("@/components/sections/contact-section").then(m => ({ default: m.ContactSection })));
 
 const Index = () => {
   const { language } = useLanguage();
@@ -17,11 +28,11 @@ const Index = () => {
   // Preload images to ensure they're available
   useEffect(() => {
     const mobileImg = new Image();
-    mobileImg.src = '/lovable-uploads/d6ec1dda-8bb4-4cf6-a6b3-228bb2fed1b2.png';
+    mobileImg.src = '/assets/hero-desktop.png';
     mobileImg.onload = () => setMobileImageLoaded(true);
     
     const desktopImg = new Image();
-    desktopImg.src = '/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde.png';
+    desktopImg.src = '/assets/hero-desktop.png';
     desktopImg.onload = () => setDesktopImageLoaded(true);
 
     // Add animation delay for elements
@@ -39,7 +50,6 @@ const Index = () => {
       contact: language === 'da' ? 'Kontakt' : 'Contact'
     },
     hero: {
-      slogan: 'Together we make a difference',
       intro: language === 'da' 
         ? 'Team SEA er en dansk forening, der hjælper mennesker i nød. Vi bygger brønde og skaber håb – én donation ad gangen.' 
         : 'Team SEA is a Danish non-profit helping people in need. We build wells and bring hope – one donation at a time.'
@@ -66,14 +76,14 @@ const Index = () => {
     }
   };
   
-  const mobileImageUrl = '/lovable-uploads/d6ec1dda-8bb4-4cf6-a6b3-228bb2fed1b2.png';
-  const desktopImageUrl = '/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde.png';
+  const mobileImageUrl = '/assets/hero-desktop.png';
+  const desktopImageUrl = '/assets/hero-desktop.png';
   
   return (
     <Layout>
       {/* Hero Section with Ocean Background */}
       <section 
-        className="relative h-[85vh] md:h-[80vh] min-h-[550px] flex items-start text-white overflow-hidden bg-cover bg-center bg-fixed"
+        className="relative h-[85vh] md:h-[80vh] min-h-[550px] flex items-start text-white overflow-hidden bg-cover bg-center"
         style={{
           backgroundImage: isMobile 
             ? `url('${mobileImageUrl}')` 
@@ -98,10 +108,7 @@ const Index = () => {
             "max-w-2xl pb-10 mt-auto transition-all duration-1000 transform",
             isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           )}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-md">
-              {content.hero.slogan}
-            </h1>
-            <p className="text-xl md:text-2xl drop-shadow-md">{content.hero.intro}</p>
+            <p className="text-xl md:text-2xl drop-shadow-md text-right ml-auto max-w-xl md:mr-[-40%] mr-0">{content.hero.intro}</p>
           </div>
           
           {/* Buttons positioned at the bottom middle */}
@@ -126,63 +133,29 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Impact Preview Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div className="flex flex-col justify-center animate-slide-up">
-              <h2 className="section-title text-3xl md:text-4xl lg:text-5xl">{content.impact.title}</h2>
-              <p className="mb-8 text-lg text-gray-700">{content.impact.description}</p>
-              <div className="mb-8">
-                <div className="grid grid-cols-2 gap-4 md:gap-6">
-                  <div className="bg-white p-6 md:p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
-                    <p className="text-4xl md:text-5xl font-bold text-primary mb-2">1</p>
-                    <p className="text-gray-600">{content.impact.wellsBuilt}</p>
-                  </div>
-                  <div className="bg-white p-6 md:p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
-                    <p className="text-4xl md:text-5xl font-bold text-primary mb-2">50+</p>
-                    <p className="text-gray-600">{content.impact.peopleHelped}</p>
-                  </div>
-                </div>
-              </div>
-              <Button asChild size="lg" className="w-full sm:w-auto text-base">
-                <Link to="/impact">{content.impact.moreAboutWork}</Link>
-              </Button>
-            </div>
-            <div className="rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition-transform duration-300 animate-slide-up">
-              <img 
-                alt={language === 'da' ? 'Brøndprojekt i Bangladesh' : 'Well project in Bangladesh'} 
-                className="w-full h-full object-cover"
-                loading="lazy"
-                src="/lovable-uploads/35dac9b3-780a-4bc3-b3bf-a8546566d8a6.png" 
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Mission Section */}
+      <MissionSection />
 
-      {/* Donate Preview Section */}
-      <section className="py-16 md:py-24">
-        <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div className="rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition-transform duration-300 animate-slide-up order-2 md:order-1">
-              <img 
-                src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                alt={language === 'da' ? 'Donér til Team SEA' : 'Donate to Team SEA'} 
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-            <div className="flex flex-col justify-center animate-slide-up order-1 md:order-2">
-              <h2 className="section-title text-3xl md:text-4xl lg:text-5xl">{content.donate.title}</h2>
-              <p className="mb-8 text-lg text-gray-700">{content.donate.description}</p>
-              <Button asChild size="lg" className="w-full sm:w-auto text-base">
-                <Link to="/donate">{content.donate.button}</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Progress Section */}
+      <ProgressSection />
+
+      {/* Donation Impact Section (NEW) */}
+      <DonationImpactSection />
+
+      {/* Partners Section */}
+      <Suspense fallback={<div className="min-h-[200px] flex items-center justify-center"><div className="animate-spin h-8 w-8 border-2 border-primary rounded-full"></div></div>}>
+        <PartnersSectionLazy />
+      </Suspense>
+
+      {/* FAQ Section */}
+      <Suspense fallback={<div className="min-h-[200px] flex items-center justify-center"><div className="animate-spin h-8 w-8 border-2 border-primary rounded-full"></div></div>}>
+        <FAQSectionLazy />
+      </Suspense>
+
+      {/* Contact Section */}
+      <Suspense fallback={<div className="min-h-[200px] flex items-center justify-center"><div className="animate-spin h-8 w-8 border-2 border-primary rounded-full"></div></div>}>
+        <ContactSectionLazy />
+      </Suspense>
     </Layout>
   );
 };

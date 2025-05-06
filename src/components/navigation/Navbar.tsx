@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Globe } from "lucide-react";
@@ -119,9 +118,12 @@ const NavLinks = ({
 const LanguageToggle = ({ language, toggleLanguage }: { language: string, toggleLanguage: () => void }) => (
   <button 
     onClick={toggleLanguage}
-    className="p-2 mr-2 rounded-full hover:bg-primary/10 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/40"
+    className="flex items-center gap-1 p-2 mr-2 rounded-full transition-colors focus:outline-none"
     aria-label={language === 'da' ? 'Switch to English' : 'Skift til dansk'}
   >
     <Globe className="w-5 h-5" />
+    <span className="text-xl ml-1" aria-label={language === 'da' ? 'Dansk' : 'English'}>
+      {language === 'da' ? '🇩🇰' : '🇬🇧'}
+    </span>
   </button>
 );

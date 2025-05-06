@@ -1,22 +1,23 @@
 import React from "react";
 import { Layout } from "@/components/Layout";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { PageHero } from "@/components/PageHero";
 
 const About = () => {
   const { language } = useLanguage();
 
   // Text content based on language
   const content = {
+    title: language === 'da' ? 'Om os' : 'About us',
+    description: language === 'da'
+      ? 'Vi er et hold af frivillige, der arbejder for at gøre en forskel. Team SEA blev stiftet ud fra en passion for at hjælpe og inspirere.'
+      : "We're a team of volunteers working to make a difference. Team SEA was born from a passion to help and inspire.",
     page: {
-      title: language === 'da' ? 'Om os' : 'About us',
-      subtitle: language === 'da' 
-        ? 'Vi er et hold af frivillige, der arbejder for at gøre en forskel. Team SEA blev stiftet ud fra en passion for at hjælpe og inspirere.'
-        : "We're a team of volunteers working to make a difference. Team SEA was born from a passion to help and inspire.",
       mission: {
         title: language === 'da' ? 'Vores mission' : 'Our mission',
         description: language === 'da'
-          ? 'At bringe rent drikkevand til mennesker i nød. Vi tror på, at adgang til rent vand er en menneskeret, og vi arbejder dedikeret for at sikre, at flere mennesker kan få denne ret opfyldt.'
-          : 'To bring clean drinking water to people in need. We believe that access to clean water is a human right, and we work dedicatedly to ensure that more people can have this right fulfilled.'
+          ? 'At yde humanitær støtte til mennesker i nød. Vi tror på, at adgang til grundlæggende ressourcer er en menneskeret, og vi arbejder dedikeret for at sikre, at flere mennesker kan få denne ret opfyldt.'
+          : 'To provide humanitarian aid to people in need. We believe that access to basic resources is a human right, and we work dedicatedly to ensure that more people can have this right fulfilled.'
       },
       values: {
         title: language === 'da' ? 'Vores værdier' : 'Our values',
@@ -38,15 +39,7 @@ const About = () => {
 
   return (
     <Layout>
-      {/* Page Header */}
-      <section className="pt-16 pb-12 bg-blue-500 text-white">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{content.page.title}</h1>
-            <p className="text-xl">{content.page.subtitle}</p>
-          </div>
-        </div>
-      </section>
+      <PageHero title={content.title} description={content.description} />
 
       {/* Mission Section */}
       <section className="py-16">
@@ -75,7 +68,7 @@ const About = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-sm text-center animate-slide-up">
+            <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl p-8 shadow-md text-center animate-slide-up">
               <div className="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
                 <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -85,7 +78,7 @@ const About = () => {
               <p className="text-gray-600">{content.page.values.transparencyDesc}</p>
             </div>
             
-            <div className="bg-white p-8 rounded-xl shadow-sm text-center animate-slide-up" style={{ animationDelay: '0.1s' }}>
+            <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl p-8 shadow-md text-center animate-slide-up" style={{ animationDelay: '0.1s' }}>
               <div className="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
                 <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -95,7 +88,7 @@ const About = () => {
               <p className="text-gray-600">{content.page.values.communityDesc}</p>
             </div>
             
-            <div className="bg-white p-8 rounded-xl shadow-sm text-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl p-8 shadow-md text-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
               <div className="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
                 <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />

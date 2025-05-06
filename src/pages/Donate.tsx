@@ -1,10 +1,10 @@
-
 import React from "react";
 import { Layout } from "@/components/Layout";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { PageHero } from "@/components/PageHero";
 
 const Donate = () => {
   const { language } = useLanguage();
@@ -39,20 +39,16 @@ const Donate = () => {
       thanks: language === 'da' 
         ? 'Tak til alle vores generøse donorer som gør en forskel hver dag.'
         : 'Thank you to all our generous donors who make a difference every day.'
-    }
+    },
+    title: language === 'da' ? 'Doner' : 'Donate',
+    description: language === 'da'
+      ? 'Din støtte kan hjælpe os med at bygge brønde og forbedre livet for tusindvis af mennesker.'
+      : 'Your support can help us build wells and improve the lives of thousands of people.'
   };
 
   return (
     <Layout>
-      {/* Page Header */}
-      <section className="relative pt-12 md:pt-16 pb-8 md:pb-12 bg-gradient-to-r from-blue-600 to-blue-500 text-white">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 animate-fade-in">{content.page.title}</h1>
-            <p className="text-lg md:text-xl opacity-90">{content.page.subtitle}</p>
-          </div>
-        </div>
-      </section>
+      <PageHero title={content.title} description={content.description} />
 
       {/* Donation Section */}
       <section className="py-8 md:py-16">

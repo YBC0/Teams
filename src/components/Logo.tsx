@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -38,7 +37,7 @@ const Logo: React.FC<LogoProps> = ({
 
   const logoImage = (
     <img 
-      src="/lovable-uploads/8eaa4326-0ac5-4859-a2c1-b441bb9dc30c.png"
+      src="/assets/logo.png"
       alt="Team SEA Logo"
       className={cn(
         sizeClasses[size],

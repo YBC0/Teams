@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { PageHero } from "@/components/PageHero";
 
 const Contact = () => {
   const { language } = useLanguage();
@@ -134,21 +135,16 @@ const Contact = () => {
         socials: language === 'da' ? 'Find os på sociale medier' : 'Find us on social media',
         info: language === 'da' ? 'Kontaktoplysninger' : 'Contact Information'
       }
-    }
+    },
+    title: language === 'da' ? 'Kontakt' : 'Contact',
+    description: language === 'da'
+      ? 'Har du spørgsmål eller vil du i kontakt med os? Vi står klar til at hjælpe.'
+      : 'Do you have questions or want to get in touch? We are ready to help.'
   };
 
   return (
     <Layout>
-      {/* Page Header */}
-      <section className="pt-16 pb-12 bg-blue-500 text-white">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{content.page.title}</h1>
-            <p className="text-xl">{content.page.subtitle}</p>
-          </div>
-        </div>
-      </section>
-
+      <PageHero title={content.title} description={content.description} />
       {/* Contact Form Section */}
       <section className="py-16">
         <div className="container-custom">

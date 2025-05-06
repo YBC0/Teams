@@ -1,9 +1,9 @@
-
 import React from "react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
+import { PageHero } from "@/components/PageHero";
 
 const Journey = () => {
   const { language } = useLanguage();
@@ -44,15 +44,7 @@ const Journey = () => {
 
   return (
     <Layout>
-      {/* Page Header */}
-      <section className="pt-16 pb-12 bg-blue-500 text-white">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{content.page.title}</h1>
-            <p className="text-xl">{content.page.subtitle}</p>
-          </div>
-        </div>
-      </section>
+      <PageHero title={content.page.title} description={content.page.subtitle} />
 
       {/* Story Section */}
       <section className="py-16">
