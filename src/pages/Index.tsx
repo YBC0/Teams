@@ -62,7 +62,7 @@ const Index = () => {
         className="relative h-[85vh] md:h-[80vh] min-h-[550px] flex items-start text-white overflow-hidden bg-cover bg-center bg-fixed"
         style={{
           backgroundImage: isMobile 
-            ? `url('/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde-mobile.png')` 
+            ? `url('/lovable-uploads/48588222-8859-40f4-bc67-cfc3a165d9ca.png')` 
             : `url('/lovable-uploads/f450b11f-3c8d-4822-a76a-7015ab617dde.png')`
         }}
       >
