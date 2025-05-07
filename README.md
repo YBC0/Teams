@@ -14,7 +14,7 @@ This is the web application for Team SEA, a Danish non-profit organization helpi
 1. Clone the repository:
 ```bash
 git clone [repository-url]
-cd sea-hope-web
+cd sea-web
 ```
 
 2. Install dependencies:

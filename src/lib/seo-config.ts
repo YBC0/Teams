@@ -1,7 +1,7 @@
 export const defaultSEO = {
   title: 'Team SEA - Building Water Wells for Communities in Need',
   description: 'Team SEA is dedicated to providing clean water access through water well construction in developing countries. Join us in our mission to bring sustainable water solutions to communities in need.',
-  siteUrl: 'https://sea-hope.org',
+  siteUrl: 'https://sea.org',
   twitterHandle: '@teamsea',
   defaultImage: '/images/og-image.jpg',
   defaultImageAlt: 'Team SEA - Water Well Construction',

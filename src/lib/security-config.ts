@@ -2,34 +2,34 @@ export const securityConfig = {
   // Content Security Policy
   csp: {
     directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: [
+      'default-src': ["'self'"],
+      'script-src': [
         "'self'",
         "'unsafe-inline'",
         "'unsafe-eval'",
         "https://cdn.gpteng.co", // For the GPT Engineer script
       ],
-      styleSrc: [
+      'style-src': [
         "'self'",
         "'unsafe-inline'",
         "https://fonts.googleapis.com",
       ],
-      fontSrc: [
+      'font-src': [
         "'self'",
         "https://fonts.gstatic.com",
       ],
-      imgSrc: [
+      'img-src': [
         "'self'",
         "data:",
         "https:",
       ],
-      connectSrc: [
+      'connect-src': [
         "'self'",
-        "https://api.sea-hope.org", // Replace with your actual API domain
+        "https://api.sea.org", // Replace with your actual API domain
       ],
-      frameSrc: ["'none'"],
-      objectSrc: ["'none'"],
-      upgradeInsecureRequests: [],
+      'frame-src': ["'none'"],
+      'object-src': ["'none'"],
+      'upgrade-insecure-requests': [],
     },
   },
 

@@ -1,86 +1,80 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { LanguageProvider } from "@/contexts/LanguageContext";
-import { Suspense, lazy, useEffect } from "react";
-import { HelmetProvider } from 'react-helmet-async';
-import { initPerformanceMonitoring } from '@/utils/performance';
-import { PerformanceMonitor } from '@/components/dev/performance-monitor';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { LoadingState } from '@/components/ui/loading-state';
-import { ROUTES } from '@/constants';
-import { logger } from '@/utils/logger';
+import { FC, lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { LanguageProvider } from './contexts/LanguageContext';
+import { AdminProvider } from './contexts/AdminContext';
+import { ErrorBoundary } from './components/ErrorBoundary';
+import { LoadingState } from './components/ui/loading-state';
 
-// Lazy load all pages
-const Index = lazy(() => import("./pages/Index"));
+// Lazy load public pages
+const Index = lazy(() => import('./pages/Index'));
+const About = lazy(() => import('./pages/About'));
+const Projects = lazy(() => import('./pages/Projects'));
+const Donate = lazy(() => import('./pages/Donate'));
+const Contact = lazy(() => import('./pages/Contact'));
+
+// Lazy load public pages
 const Impact = lazy(() => import("./pages/Impact"));
-const Projects = lazy(() => import("./pages/Projects"));
-const Donate = lazy(() => import("./pages/Donate"));
-const About = lazy(() => import("./pages/About"));
+const ProjectsPage = lazy(() => import("./pages/Projects"));
 const Journey = lazy(() => import("./pages/Journey"));
-const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-// Loading component
-const PageLoader = () => <LoadingState fullScreen size="lg" />;
+// Lazy load admin pages
+const AdminLayout = lazy(() => import('./layouts/AdminLayout'));
+const AdminDashboard = lazy(() => import('./pages/admin/Dashboard'));
+const AdminHomepage = lazy(() => import('./pages/admin/Homepage'));
+const AdminImpact = lazy(() => import('./pages/admin/Impact'));
+const AdminProjects = lazy(() => import('./pages/admin/Projects'));
+const AdminDonate = lazy(() => import('./pages/admin/Donate'));
+const AdminAbout = lazy(() => import('./pages/admin/About'));
+const AdminJourney = lazy(() => import('./pages/admin/Journey'));
+const AdminContact = lazy(() => import('./pages/admin/Contact'));
+const AdminDonations = lazy(() => import('./pages/admin/Donations'));
+const AdminMedia = lazy(() => import('./pages/admin/Media'));
+const AdminUsers = lazy(() => import('./pages/admin/Users'));
+const AdminSettings = lazy(() => import('./pages/admin/Settings'));
+const AdminActivity = lazy(() => import('./pages/admin/Activity'));
 
-/**
- * Configure Query Client with sensible defaults
- */
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      retry: 1,
-      staleTime: 5 * 60 * 1000, // 5 minutes
-    },
-  },
-});
-
-/**
- * Main App component with router and providers
- */
-const App = () => {
-  useEffect(() => {
-    try {
-      initPerformanceMonitoring();
-      logger.info('Application initialized successfully');
-    } catch (error) {
-      logger.error('Failed to initialize application', error);
-    }
-  }, []);
-
+export const App: FC = () => {
   return (
-    <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <LanguageProvider>
-            <ErrorBoundary>
-              <Toaster />
-              <Sonner />
-              <BrowserRouter>
-                <Suspense fallback={<PageLoader />}>
-                  <Routes>
-                    <Route path={ROUTES.home} element={<Index />} />
-                    <Route path={ROUTES.impact} element={<Impact />} />
-                    <Route path={ROUTES.projects} element={<Projects />} />
-                    <Route path={ROUTES.donate} element={<Donate />} />
-                    <Route path={ROUTES.about} element={<About />} />
-                    <Route path={ROUTES.journey} element={<Journey />} />
-                    <Route path={ROUTES.contact} element={<Contact />} />
-                    <Route path={ROUTES.notFound} element={<NotFound />} />
-                  </Routes>
-                </Suspense>
-              </BrowserRouter>
-              <PerformanceMonitor />
-            </ErrorBoundary>
-          </LanguageProvider>
-        </TooltipProvider>
-      </QueryClientProvider>
-    </HelmetProvider>
+    <LanguageProvider>
+      <ErrorBoundary>
+        <AdminProvider>
+          <Router>
+            <Suspense fallback={<LoadingState />}>
+              <Routes>
+                {/* Public Routes */}
+                <Route path="/" element={<Index />} />
+                <Route path="/impact" element={<Impact />} />
+                <Route path="/projects" element={<ProjectsPage />} />
+                <Route path="/donate" element={<Donate />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/journey" element={<Journey />} />
+                <Route path="/contact" element={<Contact />} />
+
+                {/* Admin Routes */}
+                <Route path="/adminsea" element={<AdminLayout />}>
+                  <Route index element={<AdminDashboard />} />
+                  <Route path="pages/home" element={<AdminHomepage />} />
+                  <Route path="pages/impact" element={<AdminImpact />} />
+                  <Route path="pages/projects" element={<AdminProjects />} />
+                  <Route path="pages/donate" element={<AdminDonate />} />
+                  <Route path="pages/about" element={<AdminAbout />} />
+                  <Route path="pages/journey" element={<AdminJourney />} />
+                  <Route path="pages/contact" element={<AdminContact />} />
+                  <Route path="donations" element={<AdminDonations />} />
+                  <Route path="media" element={<AdminMedia />} />
+                  <Route path="users" element={<AdminUsers />} />
+                  <Route path="settings" element={<AdminSettings />} />
+                  <Route path="activity" element={<AdminActivity />} />
+                </Route>
+
+                {/* 404 Route */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </Router>
+        </AdminProvider>
+      </ErrorBoundary>
+    </LanguageProvider>
   );
 };
-
-export default App;
